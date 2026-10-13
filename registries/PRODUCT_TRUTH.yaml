@@ -35,16 +35,17 @@ systems:
   DIMI:
     owns: [music and creator economy layer]
   GWAPLINK:
-    owner: UNASSIGNED
+    parent: GNS
     status: STAGING
-    scope: [profile pages on subdomains]
+    owns: [public profile layer for GNS names]
   GwapSpot_Browser:
-    owner: UNASSIGNED
     status: BUILDING
-    scope: [standalone browser: wallet bridge, GNS resolution, GwapScore badges, PPV proof relay]
+    framework: UNDECIDED
+    owns: [standalone browser: wallet bridge, GNS resolution, GwapScore badges, PPV proof relay]
+    consumed_by: [GwapOS]
   Lil_Gwapz_Bot:
-    owner: UNASSIGNED
-    scope: [Telegram bot, sticker sets, lilgwapz.xyz site]
+    parent: Tha GwapSpot
+    owns: [Telegram bot, sticker sets, lilgwapz.xyz site]
 
 monetization:
   principle: "Access is free. Identity is cheap. Trust compounds. GWAP gets paid when economic value moves through the network."
