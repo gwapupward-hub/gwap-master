@@ -30,7 +30,7 @@ systems:
   # UNASSIGNED = owner not yet decided. Work in these areas routes to D (decide) first.
   GWAP_Support_Bot:
     parent: Tha GwapSpot
-    owns: [Telegram support for GWAP projects: FAQ answers, tickets, human escalation]
+    owns: ["Telegram support for GWAP projects: FAQ answers, tickets, human escalation"]
     separate_from: [Lil_Gwapz_Bot]
   DIMI:
     owns: [music and creator economy layer]
@@ -41,7 +41,7 @@ systems:
   GwapSpot_Browser:
     status: BUILDING
     framework: UNDECIDED
-    owns: [standalone browser: wallet bridge, GNS resolution, GwapScore badges, PPV proof relay]
+    owns: ["standalone browser: wallet bridge, GNS resolution, GwapScore badges, PPV proof relay"]
     consumed_by: [GwapOS]
   Lil_Gwapz_Bot:
     parent: Tha GwapSpot
