@@ -1,5 +1,5 @@
 version: "1.0.0"
-updated_at: "2026-09-30"
+updated_at: "2026-10-13"
 status: ACTIVE
 
 ecosystem:
@@ -13,7 +13,7 @@ ecosystem:
 
 systems:
   GwapOS:
-    owns: [application orchestration, wallet/auth UX, cross-product routing, user-facing integration]
+    owns: [application orchestration, wallet/auth UX, cross-product routing, user-facing integration, Lil Gwapz premium unlock entitlement]
   GNS:
     owns: [.gwap identity, wallet linking, public profile metadata, social/profile resolution]
   GwapScore:
@@ -27,6 +27,24 @@ systems:
   GwapMojis:
     owns: [gift creation, customization, gifting]
     ownership_model: {default: OFF_CHAIN, optional_mint: EXPLICIT_USER_ACTION}
+  # UNASSIGNED = owner not yet decided. Work in these areas routes to D (decide) first.
+  GWAP_Support_Bot:
+    parent: Tha GwapSpot
+    owns: [Telegram support for GWAP projects: FAQ answers, tickets, human escalation]
+    separate_from: [Lil_Gwapz_Bot]
+  DIMI:
+    owns: [music and creator economy layer]
+  GWAPLINK:
+    owner: UNASSIGNED
+    status: STAGING
+    scope: [profile pages on subdomains]
+  GwapSpot_Browser:
+    owner: UNASSIGNED
+    status: BUILDING
+    scope: [standalone browser: wallet bridge, GNS resolution, GwapScore badges, PPV proof relay]
+  Lil_Gwapz_Bot:
+    owner: UNASSIGNED
+    scope: [Telegram bot, sticker sets, lilgwapz.xyz site]
 
 monetization:
   principle: "Access is free. Identity is cheap. Trust compounds. GWAP gets paid when economic value moves through the network."
