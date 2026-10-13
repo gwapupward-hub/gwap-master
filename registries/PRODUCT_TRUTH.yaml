@@ -1,0 +1,42 @@
+version: "1.0.0"
+updated_at: "2026-09-30"
+status: ACTIVE
+
+ecosystem:
+  umbrella: "GWAP — Grind With A Purpose"
+  company: "GwapSpot"
+  architecture:
+    - "Tha GwapSpot: public gateway"
+    - "GwapSpot OS: operating/application layer"
+    - "Tha GwapSpot Marketplace: economic layer"
+    - "Daily Ideas: discovery/innovation layer"
+
+systems:
+  GwapOS:
+    owns: [application orchestration, wallet/auth UX, cross-product routing, user-facing integration]
+  GNS:
+    owns: [.gwap identity, wallet linking, public profile metadata, social/profile resolution]
+  GwapScore:
+    owns: [social reputation, social proof-of-control]
+    does_not_own: [financial/on-chain credit reputation]
+  PPV:
+    owns: [timestamped proof, receipts, commerce evidence, invoices, contracts/proof workflows]
+    custody: {mainnet: DISABLED, devnet: CONTROLLED}
+  Daily_Ideas:
+    owns: [idea discovery, validation, project/workspace development]
+  GwapMojis:
+    owns: [gift creation, customization, gifting]
+    ownership_model: {default: OFF_CHAIN, optional_mint: EXPLICIT_USER_ACTION}
+
+monetization:
+  principle: "Access is free. Identity is cheap. Trust compounds. GWAP gets paid when economic value moves through the network."
+  rails:
+    fiat: Stripe
+    agentic_http: "MPP/x402 + Pay/Pay Kit"
+    fee_sponsorship: Kora
+    business_evidence: PPV
+
+hard_gates:
+  - "No mainnet deployment, authority change, custody activation, or automated mainnet spending without explicit approval."
+  - "Existing working repository reality outranks upstream default-stack recommendations."
+  - "External repositories inform architecture; they never silently redefine GWAP product ownership."

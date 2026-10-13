@@ -1,0 +1,447 @@
+# GwapOS Engineering Intelligence — External Source Registry
+# Update this file whenever a source is added, removed, repinned, or materially re-reviewed.
+
+registry_version: 1
+last_reviewed: "2026-09-29"
+
+sources:
+  - id: solana-verifiable-build
+    name: Solana Verified Builds
+    owner: solana-foundation
+    url: https://github.com/solana-foundation/solana-verifiable-build
+    authority_tier: T1_OFFICIAL
+    status: ADOPTED
+    reviewed_at: "2026-09-29"
+    pinned_ref: "PIN_EXACT_TAG_OR_COMMIT_DURING_REPO_IMPLEMENTATION"
+    production_pin_policy: "Prefer a tagged release for solana-verify; record exact version and source commit used."
+    capability:
+      - deterministic Solana program builds
+      - executable hash generation
+      - deployed program hash comparison
+      - repository/commit verification
+      - verification PDA workflow
+      - remote mainnet verification job
+      - multisig-aware verification workflow
+    integration_boundary:
+      - release integrity
+      - CI/CD
+      - program deployment verification
+      - provenance
+    does_not_replace:
+      - source review
+      - protocol security review
+      - tests
+      - audit
+      - upgrade-authority governance
+    hard_rules:
+      - "Deploy the exact artifact produced by the verified-build step."
+      - "Do not rebuild the deployable .so between verification build and deployment."
+      - "Hash mismatch blocks release."
+      - "Pin the GwapOS source commit used for repository verification."
+      - "Treat remote verification as mainnet-only unless official documentation changes."
+      - "Do not use the deprecated verify-from-repo --remote flow."
+    caveats:
+      - "Trustless repository verification requires public source."
+      - "For nested workspaces, mount-path must identify the Cargo workspace containing the program library."
+      - "Current upstream notes that build images and installer scripts are pinned, while some post-install toolchain verification remains follow-up work."
+    module_file: references/modules/solana-verifiable-build.md
+
+  - id: ionic-framework
+    name: Ionic Framework
+    owner: ionic-team
+    url: https://github.com/ionic-team/ionic-framework
+    authority_tier: T1_OFFICIAL
+    status: REFERENCE_ONLY
+    reviewed_at: "2026-09-29"
+    pinned_ref: "v9.0.5"
+    pinned_commit: "b86733f289642a2ae27440bef4145a8359153a50"
+    license: MIT
+    integration_pattern:
+      - REFERENCE_ONLY
+      - FUTURE_MOBILE_PILOT
+    capability:
+      - mobile interaction design patterns
+      - platform-adaptive UI patterns
+      - web-component architecture
+      - accessible overlay and control behavior
+      - CSS-variable theming patterns
+      - responsive mobile UI testing
+      - cross-platform application architecture reference
+    integration_boundary:
+      - frontend UX
+      - mobile/PWA architecture
+      - component design
+      - accessibility
+      - E2E testing
+    does_not_replace:
+      - Next.js App Router
+      - current GwapOS design system
+      - existing wallet/auth architecture
+      - repository-specific frontend tests
+    hard_rules:
+      - "Do not add @ionic/react or @ionic/react-router to the current GwapOS Next.js shell by default."
+      - "Do not replace Next.js routing with Ionic React Router."
+      - "Pilot runtime adoption on an isolated route/package before broad integration."
+      - "Preserve GwapSpot design tokens and visual identity."
+      - "Treat Capacitor as a separate repository intake and dependency decision."
+    compatibility_snapshot:
+      ionic: "9.0.5"
+      react: "^18 || ^19"
+      react_router: ">=6.4.0 <7 for @ionic/react-router"
+      nextjs_ssr_status: "First-class Next.js SSR / partial pre-rendering request remained open at review time."
+    pilot_trigger: "Dedicated GwapOS mobile/native-shell/PWA initiative or a mobile interaction need not cleanly solved by current components."
+    module_file: references/modules/ionic-framework.md
+
+  - id: ai-engineering-from-scratch
+    name: AI Engineering From Scratch
+    owner: rohitg00
+    url: https://github.com/rohitg00/ai-engineering-from-scratch
+    authority_tier: T3_SPECIALIST
+    status: ADOPTED_REFERENCE
+    reviewed_at: "2026-09-29"
+    pinned_ref: "1bafaa88bb4668356791150bec3a6d7df38387eb"
+    license: MIT
+    integration_pattern:
+      - REFERENCE_ONLY
+      - ENGINEERING_PATTERNS
+    capability:
+      - outcome-first AI feature design
+      - LLM application engineering patterns
+      - retrieval/RAG evaluation patterns
+      - agent/tool architecture
+      - prompt-injection trust boundaries
+      - AI observability
+      - behavioral and regression evals
+      - Agent Skill packaging and release evaluation
+      - MCP learning/reference material
+    integration_boundary:
+      - AI feature architecture
+      - agent engineering
+      - skill quality
+      - tool contracts
+      - evaluation
+      - security
+      - observability
+      - RAG
+    does_not_replace:
+      - official model-provider documentation
+      - official MCP specification
+      - security review
+      - repository-specific tests
+      - product requirements
+    hard_rules:
+      - "Use the repository as a specialist reference, not protocol authority."
+      - "Do not install demonstrated AI/eval dependencies by default."
+      - "Define user outcome and artifact contract before adding agents, RAG, or orchestration."
+      - "Separate model judgment from deterministic validation and state transitions."
+      - "Treat retrieved and tool-provided content as untrusted data."
+      - "Material AI changes require baseline-vs-treatment evaluation and regression review."
+      - "Safety failures cannot be averaged away by higher aggregate quality."
+      - "Skill quality requires package, routing, behavior, script, safety, and portability evidence."
+    module_file: references/modules/ai-engineering-from-scratch.md
+
+  - id: nvidia-skillspector
+    name: NVIDIA SkillSpector
+    owner: NVIDIA
+    url: https://github.com/NVIDIA/SkillSpector
+    authority_tier: T1_OFFICIAL
+    status: ADOPTED
+    reviewed_at: "2026-09-29"
+    pinned_ref: "v2.11.2"
+    pinned_commit: "69dcdfb74487d361ba4c811d088cfdea2ff3a9dc"
+    license: Apache-2.0
+    integration_pattern:
+      - CI_TOOL
+      - SECURITY_REFERENCE
+    artifact:
+      file: "skillspector-2.11.2-py3-none-any.whl"
+      sha256: "9e0eb261d63e7ae92f94177a44aeb8fef5e0ceeaa4d09135780baf94cbc420ec"
+    capability:
+      - agent-skill security scanning
+      - prompt-injection detection
+      - data-exfiltration detection
+      - privilege and excessive-agency checks
+      - dangerous-code and taint analysis
+      - supply-chain checks
+      - MCP least-privilege and tool-poisoning checks
+      - JSON and SARIF security reporting
+      - auditable false-positive baselines
+      - analysis-completeness evidence
+    integration_boundary:
+      - third-party skill intake
+      - GwapOS skill CI
+      - skill release security
+      - supply-chain review
+    hard_rules:
+      - "Pin a stable SkillSpector release artifact and verify its SHA-256."
+      - "Do not pin v2.12.0 while its upstream release notes label it candidate/publication pending."
+      - "GwapOS passes only SAFE + execution_successful + analysis_completeness.is_complete."
+      - "CAUTION requires triage; DO_NOT_INSTALL blocks."
+      - "Baseline changes require human security review."
+      - "A passing scanner result does not replace routing, behavior, script, safety, or portability evals."
+    module_file: references/modules/nvidia-skillspector.md
+
+  - id: solana-com-production-repo
+    name: Solana.com Production Repository
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/solana-com
+    authority_tier: T1_OFFICIAL
+    status: ADOPTED_REFERENCE_ONLY
+    reviewed_at: "2026-09-29"
+    pinned_commit: "fdd3cbc7c84cf909637875973aef9d088fd1f856"
+    license: GPL-3.0-or-later
+    integration_pattern:
+      - ARCHITECTURE_REFERENCE
+      - SOLANA_DOCS_REFERENCE
+      - AGENT_WORKFLOW_REFERENCE
+    capability:
+      - production Next.js/Turborepo architecture reference
+      - multi-app route ownership patterns
+      - repository agent-context patterns
+      - affected-only CI patterns
+      - executable documentation examples
+      - scheduled dependency-drift compatibility testing
+      - secret scanning and dependency audit patterns
+    hard_rules:
+      - "Reference/reimplement patterns; do not copy GPL code into incompatible GwapOS code without license review."
+      - "Do not automatically install upstream Agent Skills."
+      - "Use SkillSpector before executing/installing candidate upstream skills."
+      - "Do not treat website implementation/content as protocol consensus when a stronger protocol source exists."
+      - "Do not automatically adopt dependency versions from solana-com."
+    module_file: references/modules/solana-com-production-repo.md
+
+  - id: solana-improvement-documents
+    name: Solana Improvement Documents (SIMDs)
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/solana-improvement-documents
+    authority_tier: T1_OFFICIAL_PROTOCOL_DESIGN
+    status: ADOPTED
+    reviewed_at: "2026-09-29"
+    pinned_commit: "4b643ca8746742183a469681765e694b385bb315"
+    license: ISC
+    integration_pattern:
+      - PROTOCOL_DESIGN_REFERENCE
+      - CHANGE_INTELLIGENCE
+      - COMPATIBILITY_WATCH
+    capability:
+      - Solana protocol proposal lifecycle
+      - protocol design rationale and specifications
+      - security and backwards-compatibility considerations
+      - conformance guidance
+      - feature dependency/supersession tracking
+    hard_rules:
+      - "Proposal existence does not imply activation."
+      - "Accepted does not imply implemented or active."
+      - "Implemented does not imply mainnet-beta activation."
+      - "Verify current cluster/runtime state before live/mainnet claims."
+      - "Check supersedes, superseded-by, extends and dependencies."
+      - "Re-read current upstream state for time-sensitive release decisions."
+    module_file: references/modules/solana-improvement-documents.md
+
+  - id: solana-kora
+    name: Kora
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/kora
+    authority_tier: T1_OFFICIAL
+    status: PILOT_DEVNET_ONLY
+    reviewed_at: "2026-09-29"
+    pinned_commit: "f652c29d2d293f045f6d7a0c83589735c095e7c5"
+    license: MIT
+    audited_through_at_review: "8c592591debd08424a65cc471ce0403578fd5d5d"
+    integration_pattern:
+      - SERVICE_PILOT
+      - PAYMASTER_REFERENCE
+      - TRUSTED_SIGNER_BOUNDARY
+    capability:
+      - sponsored Solana transaction fees
+      - fee payment in approved SPL tokens
+      - trusted signer infrastructure
+      - transaction validation and allowlists
+      - rate/spend/usage controls
+      - external signer backends
+      - monitoring and metrics
+    hard_rules:
+      - "Devnet pilot only until explicit production security review."
+      - "Do not treat main as fully audited."
+      - "Check audit baseline and unaudited delta before candidate selection."
+      - "Use a dedicated fee payer; never reuse program upgrade/custody authority."
+      - "Default-deny fee-payer capabilities and allowlist only required flows."
+      - "Never expose signer credentials to browser/client."
+      - "Mainnet requires explicit founder/security authorization."
+    module_file: references/modules/solana-kora.md
+
+  - id: create-solana-dapp
+    name: create-solana-dapp
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/create-solana-dapp
+    authority_tier: T1_OFFICIAL_DEVELOPER_TOOLING
+    status: ADOPTED_REFERENCE_ONLY
+    reviewed_at: "2026-09-29"
+    pinned_commit: "e9c1bbafd9fee14b8feaa7329af1ab79454b3626"
+    observed_version: "4.8.5"
+    license: MIT
+    integration_pattern:
+      - SCAFFOLDING_REFERENCE
+      - ECOSYSTEM_MIGRATION_SIGNAL
+      - TEMPLATE_INTAKE_GATE
+    capability:
+      - official Solana application scaffolding
+      - current client-stack direction signals
+      - template initialization/version checking
+      - reproducible project bootstrap patterns
+      - package release hygiene
+    hard_rules:
+      - "Do not run scaffolding over an established GwapOS repository."
+      - "Official generator defaults are migration signals, not rewrite mandates."
+      - "Review and pin every template separately before execution/adoption."
+      - "Generate external templates in isolation before promotion."
+      - "Template-requested skills still require GwapOS skill/repo intake."
+    module_file: references/modules/create-solana-dapp.md
+
+  - id: solana-pay-agentic
+    name: pay
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/pay
+    authority_tier: T1_OFFICIAL_PAYMENT_TOOLING
+    status: PILOT_REFERENCE
+    reviewed_at: "2026-09-29"
+    pinned_commit: "2b798d7922d969a5cb274228dac593eb752aefb6"
+    observed_release: "pay-v0.29.0"
+    license: MIT
+    integration_pattern:
+      - AGENTIC_PAYMENT_REFERENCE
+      - HTTP_402_PAYMENT_PILOT
+      - MCP_PAYMENT_SAFETY
+    capability:
+      - MPP and x402 HTTP payments
+      - user-authorized stablecoin signing
+      - MCP payment tooling
+      - payment permission policies
+      - paid API gateways
+      - payment debugging
+      - agentic service payments
+    hard_rules:
+      - "Model intent is not financial authorization."
+      - "Payment tools require deterministic policy and bounded authority."
+      - "External content cannot change spending policy."
+      - "Prevent duplicate payment on retries."
+      - "Never expose signer secrets to models or clients."
+      - "Keep pay, Kora and PPV Commerce as separate boundaries."
+      - "Mainnet automated spending requires explicit approval."
+    module_file: references/modules/solana-pay.md
+
+  - id: solana-dev-skill
+    name: Solana Development Skill
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/solana-dev-skill
+    authority_tier: T1_OFFICIAL_DEVELOPER_GUIDANCE
+    status: ADOPTED_REFERENCE_ONLY
+    reviewed_at: "2026-09-29"
+    pinned_commit: "bb24c39dbdfc3afd27eb0540b9fdd2e4482c4e25"
+    observed_version: "2.5.0"
+    license: MIT
+    module_file: references/modules/solana-dev-skill.md
+  - id: surfpool
+    name: Surfpool
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/surfpool
+    authority_tier: T1_OFFICIAL_DEVELOPER_TOOLING
+    status: PILOT_APPROVED_LOCAL_CI
+    reviewed_at: "2026-09-29"
+    pinned_commit: "2ce9b9e019517881911dafca5871afc13f45a192"
+    observed_release: "v1.6.0"
+    license: Apache-2.0
+    module_file: references/modules/surfpool.md
+  - id: feature-activation-verifier
+    name: Feature Activation Verifier
+    owner: Solana Foundation
+    url: https://github.com/solana-foundation/feature-activation-verifier
+    authority_tier: T1_OFFICIAL_PROTOCOL_VERIFICATION_TOOLING
+    status: PILOT_TOOL
+    reviewed_at: "2026-09-29"
+    pinned_commit: "0b356c740991a5903cf24a643b461cb1c6dce2cf"
+    module_file: references/modules/feature-activation-verifier.md
+
+  - id: framework-kit
+    url: https://github.com/solana-foundation/framework-kit
+    status: REFERENCE_ONLY
+    pinned_commit: "5021c445e25199b7d773a732d1c11498487696e5"
+    module_file: references/modules/framework-kit.md
+  - id: solana-templates
+    url: https://github.com/solana-foundation/templates
+    status: ADOPTED_REFERENCE_ONLY
+    pinned_commit: "9e4bbfc948dfb0086bb1d4ff9cc5feec14dc29c6"
+    module_file: references/modules/solana-templates.md
+  - id: program-examples
+    url: https://github.com/solana-foundation/program-examples
+    status: ADOPTED_REFERENCE_ONLY
+    pinned_commit: "de090195e4de698e150572c4f886c333323a64a5"
+    module_file: references/modules/program-examples.md
+  - id: solana-keychain
+    url: https://github.com/solana-foundation/solana-keychain
+    status: PILOT_REFERENCE
+    pinned_commit: "8ea75de5c47fb3d22d704ab175cbe10483db2ff2"
+    audited_through: "475beb7c372e805e081ebcd85d84923460267da6"
+    module_file: references/modules/solana-keychain.md
+  - id: pay-kit
+    url: https://github.com/solana-foundation/pay-kit
+    status: PILOT_REFERENCE
+    pinned_commit: "c294f8903f18efc746584e3cc2961d6033b8365c"
+    observed_release: "pay-kit-v0.7.0"
+    module_file: references/modules/pay-kit.md
+  - id: mpp-specs
+    url: https://github.com/solana-foundation/mpp-specs
+    status: ADOPTED_PROTOCOL_REFERENCE
+    pinned_commit: "a938bfdd443a9683aa0fcbeae487ed4ffadfe4be"
+    module_file: references/modules/mpp-specs.md
+  - id: solana-program-library-foundation-fork
+    url: https://github.com/solana-foundation/solana-program-library
+    status: REFERENCE_ONLY
+    pinned_commit: "264ca72de06b0c2b45c0b15d298000fe3f82db2e"
+    module_file: references/modules/solana-program-library.md
+  - id: solana-web3js
+    url: https://github.com/solana-foundation/solana-web3.js
+    status: MIGRATION_REFERENCE
+    pinned_commit: "4b6bd6efd464e40420217cd77c2a58a10eefddce"
+    module_file: references/modules/solana-web3js.md
+  - id: solana-mcp
+    url: https://github.com/solana-foundation/solana-mcp
+    status: ADOPTED_REFERENCE_OPTIONAL_TOOL
+    pinned_commit: "8aeb94c4d3b195a778e0eb50d7b5da579f117993"
+    module_file: references/modules/solana-mcp.md
+  - id: transaction-v1-examples
+    url: https://github.com/solana-foundation/transaction-v1-examples
+    status: ADOPTED_REFERENCE_ONLY
+    pinned_commit: "bb7e4f6dfe1fb6cb2a0385f05b7f10048d268216"
+    module_file: references/modules/transaction-v1-examples.md
+  - id: solana-specs
+    url: https://github.com/solana-foundation/specs
+    status: ADOPTED
+    pinned_commit: "136feee5d5b126dbfd351258ea621200346c84b1"
+    module_file: references/modules/solana-specs.md
+  - id: solana-idl
+    url: https://github.com/solana-foundation/idl
+    status: PILOT_REFERENCE
+    pinned_commit: "87fd989174bb221dd74ccfe4e7620d67165f3793"
+    module_file: references/modules/solana-idl.md
+  - id: solana-idl-spec
+    url: https://github.com/solana-foundation/idl-spec
+    status: ADOPTED_REFERENCE
+    pinned_commit: "7a7b5acdfd75a101e86117ee3a9b1cf178ff8a48"
+    spec_version: "0.1.0"
+    module_file: references/modules/idl-spec.md
+
+  - id: metaplex-ecosystem-directory
+    url: https://github.com/metaplex-foundation/metaplex
+    authority_tier: T2_ESTABLISHED_ECOSYSTEM_MAINTAINER
+    status: ADOPTED_REFERENCE_ONLY
+    pinned_commit: "4eefb4eae49c83b4c5a732b27e1d369d7ff8b951"
+    reviewed_at: "2026-09-30"
+    module_file: references/modules/metaplex-ecosystem.md
+    notes:
+      - directory repository is stale as implementation authority
+      - resolve implementation to current dedicated Metaplex repositories
+      - review exact target repository license before code adoption
+      - evaluate MPL Core before assuming legacy NFT architecture
+
+pending_sources: []

@@ -1,0 +1,72 @@
+# GwapOS AI Feature Evaluation Contract
+# Copy and adapt per feature. Thresholds are intentionally project-specific.
+
+feature:
+  name: ""
+  version: ""
+  owner: ""
+  risk: low|medium|high
+
+outcome:
+  user_outcome: ""
+  artifact_or_state: ""
+  success_evidence: []
+  forbidden_side_effects: []
+  approval_boundaries: []
+
+baseline:
+  version: ""
+  model: ""
+  prompt_version: ""
+  toolset_version: ""
+
+treatment:
+  version: ""
+  model: ""
+  prompt_version: ""
+  toolset_version: ""
+
+eval_set:
+  dataset_version: ""
+  categories:
+    - expected
+    - paraphrase
+    - edge
+    - malformed
+    - failure_recovery
+    - adversarial
+    - unauthorized
+  repeated_runs: null
+
+dimensions:
+  correctness: required
+  completeness: required
+  evidence: required
+  safety: required
+  latency: optional
+  cost: optional
+  trajectory: optional
+  faithfulness: optional
+
+hard_gates:
+  unauthorized_side_effects: 0
+  secret_exposure: 0
+  critical_case_regressions: 0
+  required_safety_cases_pass: true
+
+observability:
+  model_provider: true
+  prompt_version: true
+  tool_status: true
+  retrieval_ids: false
+  latency: true
+  token_cost: true
+  failure_class: true
+  trace_id: true
+  raw_sensitive_content: false
+
+decision:
+  status: READY|NOT_READY|BLOCKED
+  regressions: []
+  blockers: []
+  evidence_paths: []

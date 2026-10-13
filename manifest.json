@@ -1,0 +1,25 @@
+{
+  "name": "GWAP MASTER",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "created_at": "2026-09-30",
+  "components": {
+    "engineering_intelligence": {
+      "version": "2.1.0",
+      "path": "systems/engineering-intelligence"
+    },
+    "product_truth": "registries/PRODUCT_TRUTH.yaml",
+    "decisions": "registries/DECISION_REGISTRY.yaml",
+    "releases": "registries/RELEASE_REGISTRY.yaml",
+    "sources": "registries/SOURCE_REGISTRY.yaml"
+  },
+  "hard_rules": [
+    "External technology informs GWAP; it does not control GWAP.",
+    "Current GWAP repo/deployed reality outranks upstream default-stack recommendations.",
+    "No mainnet deployment, authority change, custody activation, or automated mainnet spending without explicit approval.",
+    "Protocol activation claims require target-environment evidence.",
+    "Signer capability is not authorization.",
+    "IDL/interface verification does not replace binary provenance verification.",
+    "Digital assets must be justified by user outcome before selecting an NFT/token primitive."
+  ]
+}

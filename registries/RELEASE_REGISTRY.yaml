@@ -1,0 +1,4 @@
+version: "1.0.0"
+updated_at: "2026-09-30"
+records: []
+required_fields: [release_id, system, repo, repo_sha, environment, artifact, artifact_sha256, tests, security_gates, deployed_target, deployed_hash, idl_or_interface_evidence, status, blockers, approved_by, approved_at]

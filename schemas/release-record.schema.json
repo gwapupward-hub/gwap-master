@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GWAP MASTER Release Record",
+  "type": "object",
+  "required": [
+    "release_id",
+    "system",
+    "repo",
+    "repo_sha",
+    "environment",
+    "status"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string"
+    },
+    "system": {
+      "type": "string"
+    },
+    "repo": {
+      "type": "string"
+    },
+    "repo_sha": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "string"
+    },
+    "artifact_sha256": {
+      "type": "string"
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "security_gates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deployed_target": {
+      "type": "string"
+    },
+    "deployed_hash": {
+      "type": "string"
+    },
+    "idl_or_interface_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "NOT_READY",
+        "BLOCKED",
+        "PILOT",
+        "DEVNET_VERIFIED",
+        "RELEASE_CANDIDATE",
+        "PRODUCTION",
+        "ROLLED_BACK"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GWAP MASTER Decision Record",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "title",
+    "status",
+    "owner_system",
+    "decision",
+    "why",
+    "authoritative_sources",
+    "security_boundary",
+    "review_trigger"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PROPOSED",
+        "RESEARCHED",
+        "PILOT",
+        "DEVNET_VERIFIED",
+        "RELEASE_CANDIDATE",
+        "PRODUCTION",
+        "DEPRECATED",
+        "SUPERSEDED",
+        "BLOCKED"
+      ]
+    },
+    "owner_system": {
+      "type": "string"
+    },
+    "user_outcome": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "why": {
+      "type": "string"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authoritative_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pinned_versions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "security_boundary": {
+      "type": "string"
+    },
+    "implementation": {
+      "type": "string"
+    },
+    "test_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deployment_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback": {
+      "type": "string"
+    },
+    "review_trigger": {
+      "type": "string"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": "string"
+    }
+  }
+}

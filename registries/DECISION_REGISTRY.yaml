@@ -1,0 +1,45 @@
+version: "1.0.0"
+updated_at: "2026-09-30"
+decisions:
+  - id: GWAP-ARCH-001
+    title: "GWAP ecosystem separation"
+    status: PRODUCTION
+    owner_system: GWAP_MASTER
+    decision: "Keep identity, reputation, proof/commerce, application orchestration, payments, and digital assets as separate bounded domains."
+    review_trigger: "Major product merger or protocol ownership change."
+  - id: GWAP-PPV-001
+    title: "PPV staged deployment"
+    status: DEVNET_VERIFIED
+    owner_system: PPV
+    decision: "Core and Commerce may integrate on devnet; Escrow/custody remains gated; mainnet custody disabled."
+    review_trigger: "Explicit mainnet custody authorization and security review."
+  - id: GWAP-PAY-001
+    title: "Separate payment responsibilities"
+    status: RESEARCHED
+    owner_system: GwapOS
+    decision: "Stripe, MPP/x402 Pay/Pay Kit, Kora, and PPV serve different boundaries and must not be collapsed into one payment subsystem."
+    review_trigger: "Production agentic-payment or fee-sponsorship launch."
+  - id: GWAP-ASSET-001
+    title: "Digital assets are outcome-driven"
+    status: PRODUCTION
+    owner_system: GwapMojis
+    decision: "Do not tokenize by default. Compare off-chain state, custom state, Token-2022, MPL Core, Token Metadata, Bubblegum, and validated inscription primitives."
+    review_trigger: "Optional Solana minting enters implementation."
+  - id: GWAP-GWAPMOJI-001
+    title: "GwapMojis off-chain first"
+    status: PRODUCTION
+    owner_system: GwapMojis
+    decision: "Gift ownership and gifting remain off-chain by default; on-chain minting is optional and explicit."
+    review_trigger: "Founder explicitly changes ownership model."
+  - id: GWAP-REL-001
+    title: "Verifiable Solana releases"
+    status: PILOT
+    owner_system: PPV
+    decision: "For program releases, preserve the exact deterministic build artifact and compare executable hash with deployed program hash."
+    review_trigger: "First production-grade verified-build rollout."
+  - id: GWAP-PROTO-001
+    title: "Protocol claims require activation evidence"
+    status: PRODUCTION
+    owner_system: GWAP_MASTER
+    decision: "SIMD acceptance or implementation does not prove cluster activation; target-cluster evidence is required for live-support claims."
+    review_trigger: "Solana changes feature-gate/activation evidence model."

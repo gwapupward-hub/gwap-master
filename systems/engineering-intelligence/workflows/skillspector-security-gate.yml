@@ -1,0 +1,102 @@
+name: SkillSpector Security Gate
+
+# Reference workflow. Adapt SKILL_PATH to the repository-local skill directory.
+# This workflow intentionally uses static analysis only; optional semantic
+# scanning belongs in an approved, separately credentialed job.
+
+on:
+  workflow_dispatch:
+    inputs:
+      skill_path:
+        description: "Repository-relative path to the skill bundle"
+        required: true
+        type: string
+  pull_request:
+    paths:
+      - "**/SKILL.md"
+      - "**/references/**"
+      - "**/scripts/**"
+      - "**/templates/**"
+      - "**/.skillspector-baseline.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  skillspector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      SKILLSPECTOR_VERSION: "2.11.2"
+      SKILLSPECTOR_WHEEL_SHA256: "9e0eb261d63e7ae92f94177a44aeb8fef5e0ceeaa4d09135780baf94cbc420ec"
+      SKILL_PATH: ${{ inputs.skill_path || '.claude/skills/gwapos-engineering-intelligence' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download pinned SkillSpector wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          WHEEL="skillspector-${SKILLSPECTOR_VERSION}-py3-none-any.whl"
+          URL="https://github.com/NVIDIA/SkillSpector/releases/download/v${SKILLSPECTOR_VERSION}/${WHEEL}"
+          curl --fail --location --silent --show-error "$URL" -o "$WHEEL"
+          echo "${SKILLSPECTOR_WHEEL_SHA256}  ${WHEEL}" | sha256sum --check -
+          python -m pip install "$WHEEL"
+
+      - name: Record scanner version
+        shell: bash
+        run: |
+          set -euo pipefail
+          skillspector --version || true
+          echo "Skill path: ${SKILL_PATH}" >> "$GITHUB_STEP_SUMMARY"
+          echo "SkillSpector: ${SKILLSPECTOR_VERSION}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Static security scan
+        shell: bash
+        run: |
+          set +e
+          skillspector scan "$SKILL_PATH" \
+            --no-llm \
+            --format json \
+            --output skillspector-report.json
+          SCAN_EXIT=$?
+          echo "scan_exit=${SCAN_EXIT}" >> "$GITHUB_STEP_SUMMARY"
+          # Do not rely on v2.11.2 exit code alone. The strict parser below
+          # evaluates execution success, completeness, and recommendation.
+          exit 0
+
+      - name: Strict GwapOS security policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/skillspector_gate.py skillspector-report.json
+
+      - name: Produce SARIF
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          skillspector scan "$SKILL_PATH" \
+            --no-llm \
+            --format sarif \
+            --output skillspector-report.sarif
+          exit 0
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skillspector-security-${{ github.sha }}
+          path: |
+            skillspector-report.json
+            skillspector-report.sarif
+          if-no-files-found: warn
+          retention-days: 30

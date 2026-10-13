@@ -1,0 +1,15 @@
+version: "1.0.0"
+updated_at: "2026-09-30"
+authority_order: [founder_and_product_decisions, current_gwap_repo_and_deployment_reality, gwap_security_and_release_gates, current_official_protocol_specs, pinned_official_upstream_sources, established_ecosystem_sources, examples_templates_community]
+systems:
+  engineering_intelligence:
+    path: systems/engineering-intelligence
+    version: "2.1.0"
+high_value_sources:
+  solana: [specs, solana-improvement-documents, feature-activation-verifier, solana-dev-skill, surfpool, solana-verifiable-build, solana-keychain, kora, pay, pay-kit, mpp-specs, transaction-v1-examples, idl, idl-spec]
+  digital_assets:
+    metaplex_directory:
+      status: REFERENCE_ONLY
+      note: "Historical/ecosystem directory; resolve to current dedicated repos."
+    routes: [mpl-core, mpl-token-metadata, mpl-bubblegum]
+    metaplex_inscription: PENDING_DEEP_INTAKE

@@ -1,0 +1,121 @@
+name: Solana Verifiable Build Gate
+
+# Reference workflow for adaptation inside a GwapOS repository.
+# It intentionally DOES NOT deploy or sign transactions.
+# Before production adoption, pin GitHub Actions to immutable commit SHAs per repo policy.
+# Deployment must consume the exact artifact produced here.
+
+on:
+  workflow_dispatch:
+    inputs:
+      program_lib:
+        description: "Rust library name of the Solana program"
+        required: true
+        type: string
+      workspace_path:
+        description: "Path containing the Cargo workspace used by solana-verify"
+        required: true
+        default: "."
+        type: string
+      solana_verify_version:
+        description: "Pinned solana-verify release version"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verifiable-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Record provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "repo_sha=${GITHUB_SHA}" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "program_lib=${{ inputs.program_lib }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "workspace_path=${{ inputs.workspace_path }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "solana_verify_version=${{ inputs.solana_verify_version }}" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # Adapt Rust setup to the repository's already-pinned toolchain.
+      - name: Install pinned solana-verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo install solana-verify \
+            --version "${{ inputs.solana_verify_version }}" \
+            --locked
+
+      - name: Preflight
+        shell: bash
+        working-directory: ${{ inputs.workspace_path }}
+        run: |
+          set -euo pipefail
+          command -v docker
+          command -v cargo
+          command -v solana-verify
+          test -f Cargo.toml
+          test -f Cargo.lock
+          solana-verify --version
+
+      - name: Deterministic program build
+        shell: bash
+        working-directory: ${{ inputs.workspace_path }}
+        run: |
+          set -euo pipefail
+          solana-verify build --library-name "${{ inputs.program_lib }}"
+
+      - name: Capture executable hash
+        id: executable
+        shell: bash
+        working-directory: ${{ inputs.workspace_path }}
+        run: |
+          set -euo pipefail
+          ARTIFACT="target/deploy/${{ inputs.program_lib }}.so"
+          test -f "$ARTIFACT"
+          EXEC_OUTPUT="$(solana-verify get-executable-hash "$ARTIFACT")"
+          printf '%s\n' "$EXEC_OUTPUT"
+          EXEC_HASH="$(printf '%s\n' "$EXEC_OUTPUT" | grep -Eo '[0-9a-fA-F]{64}' | tail -n 1)"
+          test -n "$EXEC_HASH"
+          SHA256="$(sha256sum "$ARTIFACT" | awk '{print $1}')"
+          echo "artifact=$ARTIFACT" >> "$GITHUB_OUTPUT"
+          echo "artifact_sha256=$SHA256" >> "$GITHUB_OUTPUT"
+          echo "executable_hash=$EXEC_HASH" >> "$GITHUB_OUTPUT"
+          {
+            echo "artifact=$ARTIFACT"
+            echo "artifact_sha256=$SHA256"
+            echo "executable_hash=$EXEC_HASH"
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Write build metadata
+        shell: bash
+        working-directory: ${{ inputs.workspace_path }}
+        run: |
+          set -euo pipefail
+          cat > verified-build-metadata.json <<JSON
+          {
+            "repo_sha": "${GITHUB_SHA}",
+            "program_lib": "${{ inputs.program_lib }}",
+            "workspace_path": "${{ inputs.workspace_path }}",
+            "solana_verify_version": "${{ inputs.solana_verify_version }}",
+            "artifact": "${{ steps.executable.outputs.artifact }}",
+            "artifact_sha256": "${{ steps.executable.outputs.artifact_sha256 }}",
+            "executable_hash": "${{ steps.executable.outputs.executable_hash }}"
+          }
+          JSON
+
+      - name: Upload exact release candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: verifiable-${{ inputs.program_lib }}-${{ github.sha }}
+          path: |
+            ${{ inputs.workspace_path }}/${{ steps.executable.outputs.artifact }}
+            ${{ inputs.workspace_path }}/verified-build-metadata.json
+          if-no-files-found: error
+          retention-days: 30

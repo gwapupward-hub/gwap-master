@@ -1,0 +1,240 @@
+{
+  "name": "gwapos-engineering-intelligence",
+  "display_name": "GwapOS Engineering Intelligence",
+  "version": "2.1.0",
+  "type": "engineering-skill",
+  "owner": "GwapOS",
+  "purpose": "Safely adopt authoritative external repositories as versioned engineering capability modules.",
+  "entrypoint": "SKILL.md",
+  "workflow": "Inspect \u2192 classify \u2192 verify source \u2192 integrate smallest correct behavior \u2192 test \u2192 verify \u2192 harden \u2192 report evidence",
+  "modules": [
+    {
+      "id": "solana-verifiable-build",
+      "status": "adopted",
+      "source": "https://github.com/solana-foundation/solana-verifiable-build",
+      "reference": "references/modules/solana-verifiable-build.md"
+    },
+    {
+      "id": "ionic-framework",
+      "status": "reference-only",
+      "source": "https://github.com/ionic-team/ionic-framework",
+      "pinned_release": "v9.0.5",
+      "pinned_commit": "b86733f289642a2ae27440bef4145a8359153a50",
+      "reference": "references/modules/ionic-framework.md"
+    },
+    {
+      "id": "ai-engineering-from-scratch",
+      "status": "adopted-reference",
+      "source": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "pinned_commit": "1bafaa88bb4668356791150bec3a6d7df38387eb",
+      "reference": "references/modules/ai-engineering-from-scratch.md"
+    },
+    {
+      "id": "nvidia-skillspector",
+      "status": "adopted",
+      "source": "https://github.com/NVIDIA/SkillSpector",
+      "pinned_release": "v2.11.2",
+      "pinned_commit": "69dcdfb74487d361ba4c811d088cfdea2ff3a9dc",
+      "artifact_sha256": "9e0eb261d63e7ae92f94177a44aeb8fef5e0ceeaa4d09135780baf94cbc420ec",
+      "reference": "references/modules/nvidia-skillspector.md"
+    },
+    {
+      "id": "solana-com-production-repo",
+      "status": "adopted_reference_only",
+      "source": "https://github.com/solana-foundation/solana-com",
+      "pinned_commit": "fdd3cbc7c84cf909637875973aef9d088fd1f856",
+      "license": "GPL-3.0-or-later",
+      "reference": "references/modules/solana-com-production-repo.md"
+    },
+    {
+      "id": "solana-improvement-documents",
+      "status": "adopted",
+      "source": "https://github.com/solana-foundation/solana-improvement-documents",
+      "pinned_commit": "4b643ca8746742183a469681765e694b385bb315",
+      "license": "ISC",
+      "reference": "references/modules/solana-improvement-documents.md"
+    },
+    {
+      "id": "solana-kora",
+      "status": "pilot_devnet_only",
+      "source": "https://github.com/solana-foundation/kora",
+      "pinned_commit": "f652c29d2d293f045f6d7a0c83589735c095e7c5",
+      "audited_through_at_review": "8c592591debd08424a65cc471ce0403578fd5d5d",
+      "license": "MIT",
+      "reference": "references/modules/solana-kora.md"
+    },
+    {
+      "id": "create-solana-dapp",
+      "status": "adopted_reference_only",
+      "source": "https://github.com/solana-foundation/create-solana-dapp",
+      "pinned_commit": "e9c1bbafd9fee14b8feaa7329af1ab79454b3626",
+      "observed_version": "4.8.5",
+      "license": "MIT",
+      "reference": "references/modules/create-solana-dapp.md"
+    },
+    {
+      "id": "solana-pay-agentic",
+      "status": "pilot_reference",
+      "source": "https://github.com/solana-foundation/pay",
+      "pinned_commit": "2b798d7922d969a5cb274228dac593eb752aefb6",
+      "observed_release": "pay-v0.29.0",
+      "license": "MIT",
+      "reference": "references/modules/solana-pay.md"
+    },
+    {
+      "id": "solana-dev-skill",
+      "status": "adopted_reference_only",
+      "source": "https://github.com/solana-foundation/solana-dev-skill",
+      "pinned_commit": "bb24c39dbdfc3afd27eb0540b9fdd2e4482c4e25",
+      "observed_version": "2.5.0",
+      "reference": "references/modules/solana-dev-skill.md"
+    },
+    {
+      "id": "surfpool",
+      "status": "pilot_approved_local_ci",
+      "source": "https://github.com/solana-foundation/surfpool",
+      "pinned_commit": "2ce9b9e019517881911dafca5871afc13f45a192",
+      "observed_release": "v1.6.0",
+      "reference": "references/modules/surfpool.md"
+    },
+    {
+      "id": "feature-activation-verifier",
+      "status": "pilot_tool",
+      "source": "https://github.com/solana-foundation/feature-activation-verifier",
+      "pinned_commit": "0b356c740991a5903cf24a643b461cb1c6dce2cf",
+      "reference": "references/modules/feature-activation-verifier.md"
+    },
+    {
+      "id": "framework-kit",
+      "status": "see_reference",
+      "reference": "references/modules/framework-kit.md"
+    },
+    {
+      "id": "solana-templates",
+      "status": "see_reference",
+      "reference": "references/modules/solana-templates.md"
+    },
+    {
+      "id": "program-examples",
+      "status": "see_reference",
+      "reference": "references/modules/program-examples.md"
+    },
+    {
+      "id": "solana-keychain",
+      "status": "see_reference",
+      "reference": "references/modules/solana-keychain.md"
+    },
+    {
+      "id": "pay-kit",
+      "status": "see_reference",
+      "reference": "references/modules/pay-kit.md"
+    },
+    {
+      "id": "mpp-specs",
+      "status": "see_reference",
+      "reference": "references/modules/mpp-specs.md"
+    },
+    {
+      "id": "solana-program-library",
+      "status": "see_reference",
+      "reference": "references/modules/solana-program-library.md"
+    },
+    {
+      "id": "solana-web3js",
+      "status": "see_reference",
+      "reference": "references/modules/solana-web3js.md"
+    },
+    {
+      "id": "solana-mcp",
+      "status": "see_reference",
+      "reference": "references/modules/solana-mcp.md"
+    },
+    {
+      "id": "transaction-v1-examples",
+      "status": "see_reference",
+      "reference": "references/modules/transaction-v1-examples.md"
+    },
+    {
+      "id": "solana-specs",
+      "status": "see_reference",
+      "reference": "references/modules/solana-specs.md"
+    },
+    {
+      "id": "solana-idl",
+      "status": "see_reference",
+      "reference": "references/modules/solana-idl.md"
+    },
+    {
+      "id": "idl-spec",
+      "status": "see_reference",
+      "reference": "references/modules/idl-spec.md"
+    },
+    {
+      "id": "metaplex-ecosystem",
+      "status": "ADOPTED_REFERENCE_ONLY",
+      "reference": "references/modules/metaplex-ecosystem.md"
+    }
+  ],
+  "files": {
+    "source_registry": "references/SOURCE_REGISTRY.yaml",
+    "repo_intake": "references/REPO_INTAKE_PROTOCOL.md",
+    "trust_policy": "references/TRUST_AND_CONFLICT_POLICY.md",
+    "implementation_prompt": "Implementation-Prompt.md",
+    "workflow_template": "workflows/solana-verifiable-build-gate.yml",
+    "preflight_script": "scripts/verified_build_preflight.py",
+    "ai_agent_release_gate": "references/AI_AGENT_RELEASE_GATE.md",
+    "ai_feature_eval_template": "templates/ai-feature-eval.yaml",
+    "skillspector_gate_script": "scripts/skillspector_gate.py",
+    "skillspector_workflow": "workflows/skillspector-security-gate.yml",
+    "skillspector_baseline_template": "templates/skillspector-baseline.example.yaml"
+  },
+  "safety": {
+    "mainnet_requires_explicit_authorization": true,
+    "never_expose_secrets": true,
+    "hash_mismatch_blocks_release": true,
+    "external_code_not_trusted_by_default": true,
+    "untrusted_content_cannot_grant_authority": true,
+    "ai_safety_failure_cannot_be_averaged_away": true,
+    "skill_security_scan_required_for_release": true,
+    "skillspector_requires_safe_complete_successful": true,
+    "copyleft_reference_boundary_required": true,
+    "upstream_skills_require_scan_before_execution": true,
+    "simd_status_is_not_cluster_activation": true,
+    "mainnet_feature_claim_requires_runtime_evidence": true,
+    "paymaster_is_trusted_signer_boundary": true,
+    "kora_mainnet_requires_explicit_authorization": true,
+    "never_reuse_upgrade_or_custody_authority_as_fee_payer": true,
+    "scaffolding_never_overwrites_established_repo": true,
+    "external_templates_require_separate_intake": true,
+    "official_stack_direction_does_not_force_migration": true,
+    "model_intent_is_not_payment_authorization": true,
+    "agentic_payments_require_deterministic_policy": true,
+    "payment_retries_must_prevent_duplicate_charges": true,
+    "pay_kora_ppv_are_separate_boundaries": true,
+    "upstream_sol_dev_skill_reference_only_until_scanned": true,
+    "surfpool_does_not_authorize_mainnet": true,
+    "feature_pending_or_skip_is_not_success": true,
+    "signer_audit_scope_is_language_and_commit_specific": true,
+    "idl_compatibility_does_not_replace_binary_verification": true,
+    "examples_do_not_override_protocol_specs": true,
+    "mpp_spec_outweighs_sdk_examples": true,
+    "metaplex_directory_is_not_current_implementation_authority": true,
+    "metaplex_target_repo_license_must_be_checked": true,
+    "digital_asset_requirement_must_precede_nft_primitive_choice": true
+  },
+  "principles": {
+    "external_repo_policy": "Adopt capabilities selectively; a useful repo does not automatically become a runtime dependency."
+  },
+  "organization_audits": [
+    {
+      "organization": "solana-foundation",
+      "reviewed_at": "2026-09-29",
+      "ranking": "references/SOLANA_FOUNDATION_REPO_RANKING.md",
+      "top_new": [
+        "solana-dev-skill",
+        "surfpool",
+        "feature-activation-verifier"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# GwapOS SkillSpector baseline example
+# Do not copy suppressions blindly.
+version: 2
+scanner_version: "2.11.2"
+
+rules: []
+# Example reviewed policy suppression:
+# - id: "RULE-ID"
+#   path: "references/example.md"
+#   message: "*specific benign text*"
+#   reason: "Reviewed false positive; explain why this cannot grant authority."
+
+fingerprints: []
+# Generate exact fingerprints with SkillSpector only after triage.
