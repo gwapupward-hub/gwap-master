@@ -247,6 +247,9 @@ Do not begin with “make it an NFT.” Begin with the user outcome and decide w
 - `runbooks/NEW_REPO_INTAKE.md` — how new external repositories enter MASTER.
 - `examples/EXAMPLE_DECISIONS.md` — sample records.
 - `systems/engineering-intelligence/` — GwapOS Engineering Intelligence v2.1.0.
+- `CLAUDE.md` — agent instructions for this repository.
+- `.claude/agents/` — GWAP agent team definitions.
+- `runbooks/AGENT_WORKFLOWS.md` — task routing and workflows for the agent team.
 
 ## Rule for future work
 

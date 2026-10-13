@@ -11,7 +11,9 @@
     "product_truth": "registries/PRODUCT_TRUTH.yaml",
     "decisions": "registries/DECISION_REGISTRY.yaml",
     "releases": "registries/RELEASE_REGISTRY.yaml",
-    "sources": "registries/SOURCE_REGISTRY.yaml"
+    "sources": "registries/SOURCE_REGISTRY.yaml",
+    "agent_team": ".claude/agents",
+    "agent_workflows": "runbooks/AGENT_WORKFLOWS.md"
   },
   "hard_rules": [
     "External technology informs GWAP; it does not control GWAP.",

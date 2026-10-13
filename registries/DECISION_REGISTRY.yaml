@@ -1,5 +1,5 @@
 version: "1.0.0"
-updated_at: "2026-09-30"
+updated_at: "2026-10-13"
 decisions:
   - id: GWAP-ARCH-001
     title: "GWAP ecosystem separation"
@@ -43,3 +43,12 @@ decisions:
     owner_system: GWAP_MASTER
     decision: "SIMD acceptance or implementation does not prove cluster activation; target-cluster evidence is required for live-support claims."
     review_trigger: "Solana changes feature-gate/activation evidence model."
+  - id: GWAP-AGENT-001
+    title: "Repository-local agent team with task-routed workflows"
+    status: PROPOSED
+    owner_system: GWAP_MASTER
+    decision: "Adopt a six-role agent team (lead, solana, backend, frontend, devops, reviewer) defined in .claude/agents/. The lead routes each task to one workflow in runbooks/AGENT_WORKFLOWS.md. The reviewer is the quality gate. Mainnet, authority, custody, and spending actions stay founder-gated."
+    why: "Specialist roles keep each layer deep. An independent reviewer catches author blind spots. Task-routed workflows keep small fixes light and high-risk changes gated."
+    authoritative_sources: ["MASTER.md", "systems/engineering-intelligence/SKILL.md", "runbooks/DECISION_WORKFLOW.md"]
+    security_boundary: "Agents use repo tools only. The reviewer is read-only. Agent definitions contain no secrets. Any HALT action requires founder approval."
+    review_trigger: "First production release run by the team, or any change to agent tool grants or the HALT list."
