@@ -1,0 +1,406 @@
+{
+  "program_id": "6cDCrNYmasd1qmnvdLf8jyt9iFa3jW9VLzJhrb7X7SEH",
+  "rpc": "https://api.devnet.solana.com",
+  "taken_at": "2026-10-14T22:50:45.709198+00:00",
+  "record_count": 66,
+  "undecodable_count": 0,
+  "records": [
+    {
+      "account": "A9CQVEUvPPBKGPCD6NVZYdZE7Foeg6CH2jE986eaBGKj",
+      "label": "1",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "dQ77waWk1pcVth4q2fZYuQdyiZqqg2Hm4LJjj7Bogmc",
+      "label": "1012",
+      "owner": "5WwAQkHQooCQMVQMhS54B4Ar59f18f78X75oxJswznbt",
+      "data_len": 297
+    },
+    {
+      "account": "4VvAmX3KUqEG9o5kjTpE3mC8mAoEZYBsrr2Um1AEHjLa",
+      "label": "3leggithorse",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "BxcoFjB8pSB47qWCx1dvUr7CrWBTEsdVvXAqpGPmUqE9",
+      "label": "3legz",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "FnDshZpnDePj5RAXzmYn9XXEXax2VZiN95X35qdd3Mt",
+      "label": "5k2nut",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "7ziM2aUCc9myZfGSY9HUi4ZFHjwR26Q13tSXbmtAxjbC",
+      "label": "5ktonut",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "9FGUxZR7uV4j75VPxbheZn3fP1TJuoPDgsmLyuQb5XSn",
+      "label": "67",
+      "owner": "GuzCXCSerK9upKe9mjgjetHMRkJ6CcD533mfuphSMJcC",
+      "data_len": 297
+    },
+    {
+      "account": "2o7AFyRMkDx2qVq3AyRA9Krybb8JV7TgDixR6mDe8j45",
+      "label": "admin",
+      "owner": "HDkMBufpYfm1LN6apVkeV3aA2dhMk57PmBujwJ4j4Ecx",
+      "data_len": 297
+    },
+    {
+      "account": "6CCsvf5BU6L29KmjLR1wHyzVNop59RMHHpCjD3nxh518",
+      "label": "amazon",
+      "owner": "4gViqQjwb7geCytkhAFZmAdasBbpv1dzTisqcDoBg9Ed",
+      "data_len": 297
+    },
+    {
+      "account": "FXCfPKEozUiQNenpGfwZzQBDN6LxeL29DyjNSsanFunr",
+      "label": "atl",
+      "owner": "7QbeFPirksXuwYR3ng91DTuispZJD2K9P3XjDsJ5LT8r",
+      "data_len": 297
+    },
+    {
+      "account": "G3jtLWAVm93758njwSBfu2Zy3Seet5xnqCYyXiRjTvfm",
+      "label": "bdg",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "7ZfShsNG7tFDefj9NmqLW6UHJAzsHxDFU4o8SCwFgS1n",
+      "label": "beammeup",
+      "owner": "CGefbrSxAwSth2Y3N4qsHGWwzP4iQEsPRs7L6v9oZDLq",
+      "data_len": 297
+    },
+    {
+      "account": "8c8mUUJnddGY1P64UkocdnXiTjwd4MtiX8ranSTphJkk",
+      "label": "binance",
+      "owner": "3e6S2pY24kj7CjsDjfv9ZXCSFe3vCaF5gXNZhUn8vZuW",
+      "data_len": 297
+    },
+    {
+      "account": "EZRMVq68xr5fhTT4ytADtLMcqF6mv7tFkL2uAGBmqi6o",
+      "label": "btc",
+      "owner": "2vxYoyZMnsx4T2oVNSbM3HgtRzu6QGXKNYfuWDJX2dQ1",
+      "data_len": 297
+    },
+    {
+      "account": "Fukfpsa1bfakqgDsTx7VKV7iHV3B5MdhaLMGnU3zALBN",
+      "label": "bybit",
+      "owner": "CN8sVEVbi1bGpv5vDLsk6prQmAyWC795CYAmcZ6LJi4u",
+      "data_len": 297
+    },
+    {
+      "account": "DocQdBXEWsedMw1bVxhn3S51GvXxYz13d6KdmQqtk5fk",
+      "label": "coinbase",
+      "owner": "8JCi5CRkY5wWLcqFtHcfeu5UWRDNnh9fmBm2M8ff2bnD",
+      "data_len": 297
+    },
+    {
+      "account": "4n9w3nSdVBfXgdFDW1rcAKn5P237t5wZ2WV1QkearBnf",
+      "label": "delta",
+      "owner": "5WwAQkHQooCQMVQMhS54B4Ar59f18f78X75oxJswznbt",
+      "data_len": 297
+    },
+    {
+      "account": "9gxQuDNoEd3SJuC3tBRVFtjaxGvLYBdWtW1edTifwkPM",
+      "label": "dev",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "F85SGmm1USDzjiFEKCKpDAL4KvAG3N95HFgRvkF7SE9W",
+      "label": "dingaling",
+      "owner": "4fHubQmV6JZaZgocKD6KiSUwG8M3883vYRuLUpBSoUSa",
+      "data_len": 297
+    },
+    {
+      "account": "AmRJeCMN9jgrtoQo66XRF6HDkr6rjCjyHaZ4rUqC3wX5",
+      "label": "doge",
+      "owner": "7D1Frzn7t5BnbMitdUGuqVBiaudsXjFEdtdie6kz5iQu",
+      "data_len": 297
+    },
+    {
+      "account": "vaLPCscbLEb1WsENNSJMssGJrzM7CqY2pon1GjL7KdP",
+      "label": "elonmusk",
+      "owner": "7wnysS5vsPrfAqpJkhNqsmCQZY7ruV3KkVmy7GMjTcq",
+      "data_len": 297
+    },
+    {
+      "account": "E9pPUTBz1Zxao7Ekn5C91eJS1iEqcWEdZ9DFL5phjp1Q",
+      "label": "founder",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "GomBSwYk8zwjF4MRyfL1kjTCjGVz4mLUvDqSjqGQYMgS",
+      "label": "gateio",
+      "owner": "8bUtSHeFXDXA5j2ogd5SyuAUrgx3Ktw7V76HSJHnSEU5",
+      "data_len": 297
+    },
+    {
+      "account": "BLVZdPUdamyhYQLCuNx61mPTyNQfH24K3YzyLtAKNMh4",
+      "label": "gns",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "7UPUVrdhjK4PxRpLeowv9PSWBEmSrBs9NV69Sa6AG8FJ",
+      "label": "green",
+      "owner": "5y12g4GKbba3k6WDUyZT8eUfeBdboxxGrjkdjM4kX2Wo",
+      "data_len": 297
+    },
+    {
+      "account": "AB4Kqf6kHYTeQUBvk9SR9uwcHZwrUPNemuxETNW71aCT",
+      "label": "i",
+      "owner": "GuzCXCSerK9upKe9mjgjetHMRkJ6CcD533mfuphSMJcC",
+      "data_len": 297
+    },
+    {
+      "account": "BNhZz7XrdHkjzAi1iG4mhhWKdhDA2ZWtRAp25XtAmB4z",
+      "label": "igotmeats",
+      "owner": "Ey7Pbc6aXeUEN85mkNfMxitAaTQ6tmqmtfN7ALmKSX5i",
+      "data_len": 297
+    },
+    {
+      "account": "GQW2pNWWzWWBhAWwtsJH9k973832S52GU9FrGGFJEdMP",
+      "label": "inspectorrr",
+      "owner": "7r66eoxD9g9WYw5xUUdtcaq2cNbbBihtYQEthsNvMWTJ",
+      "data_len": 297
+    },
+    {
+      "account": "3oyKxALjN7MKxxxcR5RjXWz5btn1SwTQRDPSWQMCTmbg",
+      "label": "kraken",
+      "owner": "5urLqgQEk4ZVWVXhSKMoXjxwvJJaGBESkUgKwA4jYmJL",
+      "data_len": 297
+    },
+    {
+      "account": "9wTbVrxfVrgG9oUHgchExbP3wbXwGYcNBGAncKyFaMAu",
+      "label": "lfg",
+      "owner": "4gViqQjwb7geCytkhAFZmAdasBbpv1dzTisqcDoBg9Ed",
+      "data_len": 297
+    },
+    {
+      "account": "y4rjPvhg5rAFfSgM4VENX94mCGvRhYVxMsUpL8QwXCy",
+      "label": "limitless",
+      "owner": "CGefbrSxAwSth2Y3N4qsHGWwzP4iQEsPRs7L6v9oZDLq",
+      "data_len": 297
+    },
+    {
+      "account": "98J9D7RJt468JTHFhsE6z9tFZmMFHJx9ZaefRmTBfVVy",
+      "label": "m0e",
+      "owner": "BAPybSDf4aCRGt6mNgnRCUoB8ymmcoBtr5wDUvjUjDBe",
+      "data_len": 297
+    },
+    {
+      "account": "E6UJcVk77PZBUwEH6kPqmvSvqsxw1StHSzyZ5BA4yZHo",
+      "label": "mexc",
+      "owner": "37VSUiJ2utu9y5kH3RpKatuo4UqpyuyjUu3GF8psghe8",
+      "data_len": 297
+    },
+    {
+      "account": "DpTyBzYEdLrnQ4WtxMZTJMD1oNd2yup1E9h5unvbhFQq",
+      "label": "moe",
+      "owner": "58kuGbxpvaamvYE44WYkyipBB6FVKt2qT9u3vAKtyKYV",
+      "data_len": 297
+    },
+    {
+      "account": "4UGK6DC61pZ7cbEfR9GxFtYwajTEQS71k7qe7LTPbQ8S",
+      "label": "msprofit",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "7kDvHJ4KuPv2WBA7N4Cn2tTNCpoiyzCboBNCrwQxxBQj",
+      "label": "nike",
+      "owner": "HDkMBufpYfm1LN6apVkeV3aA2dhMk57PmBujwJ4j4Ecx",
+      "data_len": 297
+    },
+    {
+      "account": "9vwmGDf8rNCYihGbKVDAvXmDydQKb8EVUDsSG7jnUrCk",
+      "label": "no",
+      "owner": "58kuGbxpvaamvYE44WYkyipBB6FVKt2qT9u3vAKtyKYV",
+      "data_len": 297
+    },
+    {
+      "account": "HUMGUDqKmMgkMrEZnmFr1BSNREHqyEprwBp9nCGWFJa7",
+      "label": "no-reply",
+      "owner": "7QbeFPirksXuwYR3ng91DTuispZJD2K9P3XjDsJ5LT8r",
+      "data_len": 297
+    },
+    {
+      "account": "5kEFrt51xRnnqZ4NsczD8WQ6CbvzDMpKL3dt5JaxGRUH",
+      "label": "num1",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "DdmqEX3nmeGs1E1zeGdHkvF8iK175NcZf3J9Qk8G5q4y",
+      "label": "ohthatsashley",
+      "owner": "8Q6U3NXuxYnjReoAkwwGthjVVtpJq15UkKPkmasgvJ3V",
+      "data_len": 297
+    },
+    {
+      "account": "Aa3VLMBeGnEjseHbJSkXqeeiYzFk1EHb65zLMr8G1GeA",
+      "label": "onchaintest",
+      "owner": "4fHubQmV6JZaZgocKD6KiSUwG8M3883vYRuLUpBSoUSa",
+      "data_len": 297
+    },
+    {
+      "account": "HFkddNLZRz4ojyxdescRLipbehStqzJNskqqYc97C68L",
+      "label": "original",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "8xZrpxwTgLNMhjYMFSxJGtiKLDe6AWNPkpHACD95Lybh",
+      "label": "papi",
+      "owner": "4fHubQmV6JZaZgocKD6KiSUwG8M3883vYRuLUpBSoUSa",
+      "data_len": 297
+    },
+    {
+      "account": "8ARwJKhaVzFcpim27TjVAoiA2BXnRsw2zYv3sTZLQfRN",
+      "label": "pawg",
+      "owner": "2vxYoyZMnsx4T2oVNSbM3HgtRzu6QGXKNYfuWDJX2dQ1",
+      "data_len": 297
+    },
+    {
+      "account": "7b9JN46JMYRDoRAtMmGo4tyNwz3TZ6xdbRvYETDCQ1hp",
+      "label": "peanut",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "8ZMTWZxsBbh4DPXZsFxeLwSjYobJsKDhKo64pKGF4fZz",
+      "label": "phantom",
+      "owner": "HDkMBufpYfm1LN6apVkeV3aA2dhMk57PmBujwJ4j4Ecx",
+      "data_len": 297
+    },
+    {
+      "account": "4NkQqPYPXwrjsNq77joRhBkSUXxjTsF4hjmQWDZoBDs4",
+      "label": "purp2k",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "EseAymH2aaezPWasA1cLfwbLzS3himSAsmTGaBqYduJp",
+      "label": "righteous",
+      "owner": "CGefbrSxAwSth2Y3N4qsHGWwzP4iQEsPRs7L6v9oZDLq",
+      "data_len": 297
+    },
+    {
+      "account": "3oWenCdMRspqMvQvoR9CEgsMVxgUJYsymQAK7pwniKsD",
+      "label": "shop",
+      "owner": "58kuGbxpvaamvYE44WYkyipBB6FVKt2qT9u3vAKtyKYV",
+      "data_len": 297
+    },
+    {
+      "account": "3ZNYGx5dJoer7fyf8VMsoFrE37EhALU5ECWptsDrusex",
+      "label": "sol",
+      "owner": "5y12g4GKbba3k6WDUyZT8eUfeBdboxxGrjkdjM4kX2Wo",
+      "data_len": 297
+    },
+    {
+      "account": "AYEeNtZ1KYShvF2tMqo2RbrRikEdEznfqkvgaRebEMob",
+      "label": "solana",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "BwuoZr2Epaafq95bTT5gV9rNY7z13W9rikS8XRgASgSs",
+      "label": "support",
+      "owner": "BJmFM4k7Q32CiCYSdoYkAhXdD5Sk3BegMh2cbEAsgSwJ",
+      "data_len": 297
+    },
+    {
+      "account": "5pA6Uk5FgjeqyLvERkaVq9bKcA9CJNdkcgPGWe5NQiN7",
+      "label": "tesla",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "HrK8QJR3LafDgoTLKdtGjMuwyagDsMRTwbXfFN4mnHo9",
+      "label": "testing",
+      "owner": "7r66eoxD9g9WYw5xUUdtcaq2cNbbBihtYQEthsNvMWTJ",
+      "data_len": 297
+    },
+    {
+      "account": "Amy9ZVkKcNsq18fomi7qaZ8Ct8bST2DAvtJ7sdzKoxue",
+      "label": "thagwap",
+      "owner": "7QbeFPirksXuwYR3ng91DTuispZJD2K9P3XjDsJ5LT8r",
+      "data_len": 297
+    },
+    {
+      "account": "8bTdKh236FPYWSva3Xc7RcHTU648uwLJ5LayKXwe3nZ3",
+      "label": "thaspot",
+      "owner": "4fHubQmV6JZaZgocKD6KiSUwG8M3883vYRuLUpBSoUSa",
+      "data_len": 297
+    },
+    {
+      "account": "BmuajMNpNSTz52kL4PKAFRCrVTr3YgPz39MryHUgXmKx",
+      "label": "theoriginal",
+      "owner": "BJmFM4k7Q32CiCYSdoYkAhXdD5Sk3BegMh2cbEAsgSwJ",
+      "data_len": 297
+    },
+    {
+      "account": "6gtZ6udzuyULzC3bvRFmgh4hPE6asJGcwQSkUYrXmdPi",
+      "label": "top",
+      "owner": "5y12g4GKbba3k6WDUyZT8eUfeBdboxxGrjkdjM4kX2Wo",
+      "data_len": 297
+    },
+    {
+      "account": "GfXiWzgnmEsgaBheR6ccHgKZhfna9QufFBMUx6uV4uv2",
+      "label": "trump",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "84jH3Ho3fnawy9KJkNYoG7CsixBbR77FoZZ1qJsaqrK4",
+      "label": "upbit",
+      "owner": "9PU7b3PhXSbFkECKSwCoYuiZ7GRWET3BGNP9keNbS7mz",
+      "data_len": 297
+    },
+    {
+      "account": "3SFGkg7Usw9X3hix43L6BMV2YoJ7bN6WEua1VgUqqn8c",
+      "label": "wap",
+      "owner": "5kwAdkajFLZh1VD87aPFEkALC4TQkro5BpgUhkW2K3N2",
+      "data_len": 297
+    },
+    {
+      "account": "2bWrNkagchWWHcg662Djux3ZHWZhR1MVzLeHnemaoeju",
+      "label": "we",
+      "owner": "2FFVcm9xJmUHG6zfo15ktzuGQTXACPG42iquGHe6faTN",
+      "data_len": 297
+    },
+    {
+      "account": "WSyDcs3624b5MedyDHWtiweMWekbJ9nSmQHg8t4KTMj",
+      "label": "whois",
+      "owner": "GuzCXCSerK9upKe9mjgjetHMRkJ6CcD533mfuphSMJcC",
+      "data_len": 297
+    },
+    {
+      "account": "Fu95qc9ksmWUeH1HrgQgeEbme9nktA45g2zgcnH6uuvA",
+      "label": "wow",
+      "owner": "4fHubQmV6JZaZgocKD6KiSUwG8M3883vYRuLUpBSoUSa",
+      "data_len": 297
+    },
+    {
+      "account": "CotM8QkZuUXwb2QFaJvRHw3zqgTyB4NKytTp1aAN3peS",
+      "label": "x",
+      "owner": "GrN4wRzDz627kusjZ19BowBCtG4BJ2KXU4U6f6nQy4jg",
+      "data_len": 297
+    },
+    {
+      "account": "9P4z14sNUUx1i7dsB2TUk91uShhn8JbiCS2ekNKdU4WQ",
+      "label": "xxx",
+      "owner": "7D1Frzn7t5BnbMitdUGuqVBiaudsXjFEdtdie6kz5iQu",
+      "data_len": 297
+    }
+  ],
+  "undecodable": []
+}
