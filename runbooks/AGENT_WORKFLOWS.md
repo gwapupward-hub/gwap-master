@@ -27,7 +27,7 @@ The lead runs this first. Check top to bottom. The first match wins. State the w
 
 If a task matches HALT and another row, HALT wins. Prepare the evidence and stop.
 
-If the owning product is not listed in `registries/PRODUCT_TRUTH.yaml`, route to **D** before any code.
+If the owning product is missing from `registries/PRODUCT_TRUTH.yaml`, or has no owner recorded there (`UNASSIGNED`), route to **D** before any code.
 
 ---
 

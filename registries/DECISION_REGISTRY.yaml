@@ -52,3 +52,57 @@ decisions:
     authoritative_sources: ["MASTER.md", "systems/engineering-intelligence/SKILL.md", "runbooks/DECISION_WORKFLOW.md"]
     security_boundary: "Agents use repo tools only. The reviewer is read-only. Agent definitions contain no secrets. Any HALT action requires founder approval."
     review_trigger: "First production release run by the team, or any change to agent tool grants or the HALT list."
+  - id: GWAP-OWN-001
+    title: "GWAP Support Bot is its own system under Tha GwapSpot"
+    status: PRODUCTION
+    owner_system: Tha_GwapSpot
+    decision: "The Telegram support bot for all GWAP projects (FAQ answers, tickets, human escalation) is a separate system from the Lil Gwapz bot and belongs to Tha GwapSpot overall."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "Support escalations must not gain payment or identity authority. Any bot token is a platform secret."
+    review_trigger: "Support bot is merged into another system, or it starts handling payments."
+  - id: GWAP-OWN-002
+    title: "DIMI is its own system"
+    status: PRODUCTION
+    owner_system: DIMI
+    decision: "DIMI, the music and creator economy layer, is its own system."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "Rights attestations and payouts follow the PPV and payment boundaries in GWAP-PAY-001 and GWAP-PPV-001."
+    review_trigger: "DIMI payouts or rights attestation go live, or ownership changes."
+  - id: GWAP-OWN-003
+    title: "GwapOS owns the Lil Gwapz premium unlock"
+    status: PRODUCTION
+    owner_system: GwapOS
+    decision: "GwapOS owns the entitlement that unlocks animated Lil Gwapz stickers. The unlock can be granted by a one-time card purchase or by holding a .gwap name on devnet."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml", "registries/DECISION_REGISTRY.yaml"]
+    security_boundary: "Card payments stay on Stripe (GWAP-PAY-001). Name holdings are read from GNS. The client never supplies proof of payment or ownership that the server has not verified."
+    review_trigger: "Unlock moves to mainnet, or a new unlock method is added."
+  - id: GWAP-OWN-004
+    title: "GWAPLINK is the public profile layer of GNS"
+    status: PRODUCTION
+    owner_system: GNS
+    decision: "GWAPLINK, the public profile layer for GNS names, belongs to GNS. It is currently in staging."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "PROPOSED, not yet founder-confirmed: profile pages read GNS identity data and do not write identity state."
+    review_trigger: "GWAPLINK goes live, or on-chain profile_uri pinning is added."
+  - id: GWAP-OWN-005
+    title: "GwapSpot Browser is its own system, consumed by GwapOS"
+    status: PRODUCTION
+    owner_system: GwapSpot_Browser
+    decision: "GwapSpot Browser is its own system. GwapOS uses it inside GwapOS. Its framework is not yet decided."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "PROPOSED, not yet founder-confirmed: the browser holds no signing keys. Transactions are approved through the GwapOS wallet and auth flow."
+    review_trigger: "The framework is chosen, or the browser ships outside GwapOS."
+  - id: GWAP-OWN-006
+    title: "Lil Gwapz belongs to GwapSpot"
+    status: PRODUCTION
+    owner_system: Tha_GwapSpot
+    decision: "Lil Gwapz, including its Telegram bot, sticker sets, and lilgwapz.xyz site, is a GwapSpot production under Tha GwapSpot."
+    why: "Founder decision recorded 2026-10-13."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "The bot token is a platform secret. The premium unlock stays with GwapOS (GWAP-OWN-003)."
+    review_trigger: "Lil Gwapz becomes its own system, or the bot starts handling payments."
