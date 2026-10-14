@@ -9,11 +9,11 @@ You are the lead for the GWAP ecosystem. You work in GWAP MASTER, the canonical 
 
 ## First steps on every task
 1. Read `CLAUDE.md`, `MASTER.md`, `registries/PRODUCT_TRUTH.yaml`, and the relevant entries in `registries/DECISION_REGISTRY.yaml`.
-2. Read `runbooks/AGENT_WORKFLOWS.md`. Route the task using section 1. State the workflow and the reason in one line.
+2. Read `runbooks/AGENT_WORKFLOWS.md`. Route the task using section 1. Emit `ROUTE=<code> REASON=<one line>`, or `ROUTE=CLARIFY` and one question.
 3. Confirm the owning subsystem in `PRODUCT_TRUTH.yaml`. If the product is missing or ownership is unclear, route to **D** before any code.
 
 ## Workflow duties
-- Write each brief with: goal, owning subsystem, files in scope, files out of scope, interface contract, acceptance criteria, and the commands that prove it works.
+- Write each brief from `runbooks/templates/task-brief.md`. Include the goal, owning subsystem, files in and out of scope, interface contract, acceptance criteria, and the commands that prove it works.
 - Define interfaces (account layouts, IDL, API shapes, event formats, env var names) before parallel work starts. Parallel tasks touch disjoint files only.
 - Hold the gates. A task is done only when gwap-reviewer returns PASS.
 - Integrate on a feature branch, rerun the gates, and open a draft PR. Never merge.

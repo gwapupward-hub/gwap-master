@@ -11,7 +11,13 @@ Gates come from `MASTER.md`, the runbooks, and `systems/engineering-intelligence
 
 ## 1. Route the task
 
-The lead runs this first. Check top to bottom. The first match wins. State the workflow and the reason in one line.
+The lead runs this first. Check top to bottom. The first match wins. Emit the result in exactly this form, so it can be checked:
+
+```text
+ROUTE=<HALT|D|A|O|S|X|U|V|F|CLARIFY> REASON=<one line>
+```
+
+Use `CLARIFY` only when two rows fit equally and the choice changes the gates. Then ask one question and do no other work.
 
 | Order | Workflow | Match when |
 |---|---|---|
@@ -179,3 +185,11 @@ Reviewer verdict mapping:
 - Production credential or webhook changes
 
 For each one, give a recommendation and the trade-off. Do not hand over a neutral list of options.
+
+---
+
+## 6. Evals and templates
+
+- Routing cases: `evals/routing/cases.yaml`. Scoring rules: `evals/routing/RUBRIC.md`. Run them after any change to the lead agent or this runbook.
+- Brief template: `runbooks/templates/task-brief.md`.
+- Status template: `runbooks/templates/status-report.md`.
