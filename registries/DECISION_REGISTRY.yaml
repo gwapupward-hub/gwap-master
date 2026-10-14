@@ -1,5 +1,5 @@
 version: "1.0.0"
-updated_at: "2026-10-13"
+updated_at: "2026-10-14"
 decisions:
   - id: GWAP-ARCH-001
     title: "GWAP ecosystem separation"
@@ -144,8 +144,22 @@ decisions:
     pinned_versions: ["anchor-lang 0.30.1 (programs/Anchor.toml)"]
     security_boundary: "Upgrade authority DPXuqzM51BfjRoCRsmCSUGLjt6RBet9wxQidfoSQb5yJ stays with the founder. Devnet only; no mainnet deploy or authority change under this record."
     implementation: "Open. programs/gwap_names/src/lib.rs, programs/Anchor.toml, and about 35 references across backend, frontend, gwap-names, and scripts still name 6cDC. They must move to A9SC before any release. The release then follows the Solana release-integrity steps (repo SHA, deterministic build, .so hash, deploy, on-chain hash comparison)."
-    deployment_evidence: ["Devnet deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme (program A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH)", "Verification 7 passed, 0 failed, 2 skipped. No on-chain hash comparison recorded yet."]
+    deployment_evidence: ["Devnet deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme (program A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH)", "Verification 7 passed, 0 failed, 2 skipped.", "On-chain hash checked 2026-10-14 (evidence/2026-10-14-A9SC-binary-check.md): deployed program data sha256 1c9d70e… (571,816 bytes) is not reproduced by a local cargo-build-sbf of cc1ff12 (565,144 bytes). Release gate: no upgrade until a build reproduces the on-chain hash or the founder accepts the gap in writing."]
     review_trigger: "Any mainnet step, or a finding that the deployed binary does not match a built commit."
     approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Do whatever is recommended'"
     approved_at: "2026-10-14"
-    impact: "Holders of .gwap names that exist only on 6cDC lose the Lil Gwapz premium unlock once its reads move to A9SC (GWAP-OWN-003 reads name holdings from GNS). Founder decision still open: keep reads on 6cDC for the unlock, or grant another path."
+    impact: "Holders of .gwap names that exist only on 6cDC lose the Lil Gwapz premium unlock once its reads move to A9SC (GWAP-OWN-003 reads name holdings from GNS). Founder chose 'grant another path' (2026-10-14); see GWAP-OWN-004."
+  - id: GWAP-OWN-004
+    title: "Lil Gwapz unlock for holders of 6cDC-only names uses a grant, not 6cDC reads"
+    status: PILOT
+    owner_system: GwapOS
+    decision: "Holders of .gwap names that exist only on the legacy 6cDC program keep the Lil Gwapz premium unlock through a one-time grant record in GwapOS, keyed by wallet and taken from evidence/2026-10-14-6cDC-name-owner-snapshot.json (27 owners). GNS reads for the unlock stay on A9SC."
+    why: "Founder chose 'grant another path' (2026-10-14) over keeping unlock reads on 6cDC. A fixed grant list avoids a runtime dependency on the retired program, and keeps GNS reads on one canonical program."
+    alternatives: ["Keep unlock reads on 6cDC (not chosen by founder; keeps a retired program in the live path)"]
+    authoritative_sources: ["evidence/2026-10-14-6cDC-name-owner-snapshot.json", "registries/DECISION_REGISTRY.yaml (GWAP-OWN-003, GWAP-GNS-001)"]
+    security_boundary: "The grant is written server-side by GwapOS. The client never supplies proof of holding. The card purchase path (GWAP-PAY-001) is unchanged."
+    implementation: "Open. The unlock code is not in the repos on this machine. Recommended mechanism, not yet built: one grant record per wallet from the snapshot, with the snapshot kept as evidence. A wallet that later sells its 6cDC name keeps the grant; this is a deliberate trade-off."
+    review_trigger: "The grant list is edited, or the unlock moves to mainnet."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Grant another path'"
+    approved_at: "2026-10-14"
+    impact: "The 27 owners of 6cDC names keep the unlock once the grant is live. Until then they lose it when unlock reads move to A9SC."
