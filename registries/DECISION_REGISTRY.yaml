@@ -1,5 +1,5 @@
 version: "1.0.0"
-updated_at: "2026-10-13"
+updated_at: "2026-10-14"
 decisions:
   - id: GWAP-ARCH-001
     title: "GWAP ecosystem separation"
@@ -106,3 +106,60 @@ decisions:
     authoritative_sources: ["registries/PRODUCT_TRUTH.yaml"]
     security_boundary: "The bot token is a platform secret. The premium unlock stays with GwapOS (GWAP-OWN-003)."
     review_trigger: "Lil Gwapz becomes its own system, or the bot starts handling payments."
+
+  - id: GWAP-INFRA-001
+    title: "GWAP web services consolidated on Vercel and Render"
+    status: PILOT
+    owner_system: GWAP_MASTER
+    decision: "Frontends deploy to Vercel. The GNS backend and GwapIntel wallet-intelligence deploy to Render, defined in the repo-root render.yaml Blueprint. Railway is no longer a deployment target; its config is removed in gns-decent-deploy PR #78 (chore/vercel-render-only). MongoDB Atlas stays until GWAP-DATA-001 is implemented."
+    why: "Founder direction, 2026-10-14: reduce the number of hosting platforms. Render has no managed MongoDB, which is why the data-layer move is recorded separately."
+    alternatives: ["Keep Vercel, Render, Railway, and Atlas (status quo, four platforms)", "Render for everything, including frontends (rejected: Vercel already serves the Next.js and CRA frontends and the /s/:name rewrite)"]
+    authoritative_sources: ["render.yaml", "frontend/vercel.json", "registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "Secrets live only in Vercel and Render secret stores, never in the repo. Deleting Railway or Atlas resources, DNS or domain changes, and data deletion are founder actions."
+    review_trigger: "A required capability is unavailable on Vercel or Render, or Render's free Postgres deletion policy changes the production plan."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Do whatever is recommended'"
+    approved_at: "2026-10-14"
+  - id: GWAP-DATA-001
+    title: "GNS backend data layer moves from MongoDB Atlas to Render Postgres"
+    status: PILOT
+    owner_system: GNS
+    decision: "Move the four backend collections (names, profile_metadata, payment_settings, poh_verifications) from MongoDB to Postgres on Render. The data-access code lives in backend/server.py. Wallet-intelligence already uses Postgres on Render and is not affected."
+    why: "Render has no managed MongoDB, so removing Atlas under GWAP-INFRA-001 requires this move. The Mongo surface is contained in one file (about 50 lines touching the four collections). The move is a rewrite, so it is a separate PR, not part of the hosting change."
+    alternatives: ["Run MongoDB as a container on a Render persistent disk (rejected: operating a database by hand, no managed backups)", "Keep Atlas as a third platform (rejected by founder direction)"]
+    authoritative_sources: ["backend/server.py", "render.yaml", "docs/gns-v2/integration-guide.md"]
+    security_boundary: "payment_settings and poh_verifications hold sensitive records. The migration keeps the same access rules, and no connection strings are committed. Atlas is kept until the new store is verified."
+    implementation: "Not started. Requires a schema design, a V-workflow implementation on a feature branch, backend tests against Postgres, and gwap-reviewer PASS before merge."
+    rollback: "Keep Atlas data and the MONGO_URL path until the Postgres path has passed verification."
+    review_trigger: "Migration verification fails, or the schema for names changes."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Do whatever is recommended'"
+    approved_at: "2026-10-14"
+  - id: GWAP-GNS-001
+    title: "Fresh start for GNS on devnet; legacy 6cDC names are not migrated"
+    status: PILOT
+    owner_system: GNS
+    decision: "The canonical devnet GNS program is A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH, deployed 2026-10-14 with V1 and V2 config initialized. Names registered under the earlier program 6cDCrNYmasd1qmnvdLf8jyt9iFa3jW9VLzJhrb7X7SEH are not migrated and are no longer reserved. Before the reservation rule is dropped, the 66 names and 27 owners on 6cDC are recorded in evidence/2026-10-14-6cDC-name-owner-snapshot.json."
+    why: "Founder decision, 2026-10-14: start fresh and forget the already-registered names. The snapshot is kept because docs/mainnet-cutover-plan.md requires an owner snapshot before any mainnet flip."
+    alternatives: ["Migrate the 66 names to A9SC with migrate_name (rejected by founder)", "Keep 6cDC as the canonical program and upgrade it (rejected: its legacy accounts would sit under changed code)"]
+    authoritative_sources: ["evidence/2026-10-14-6cDC-name-owner-snapshot.json", "docs/mainnet-cutover-plan.md", "registries/PRODUCT_TRUTH.yaml"]
+    pinned_versions: ["anchor-lang 0.30.1 (programs/Anchor.toml)"]
+    security_boundary: "Upgrade authority DPXuqzM51BfjRoCRsmCSUGLjt6RBet9wxQidfoSQb5yJ stays with the founder. Devnet only; no mainnet deploy or authority change under this record."
+    implementation: "Open. programs/gwap_names/src/lib.rs, programs/Anchor.toml, and about 35 references across backend, frontend, gwap-names, and scripts still name 6cDC. They must move to A9SC before any release. The release then follows the Solana release-integrity steps (repo SHA, deterministic build, .so hash, deploy, on-chain hash comparison)."
+    deployment_evidence: ["Devnet deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme (program A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH)", "Verification 7 passed, 0 failed, 2 skipped.", "On-chain hash checked 2026-10-14 (evidence/2026-10-14-A9SC-binary-check.md): deployed program data sha256 1c9d70e… (571,816 bytes) is not reproduced by a local cargo-build-sbf of cc1ff12 (565,144 bytes). Release gate: no upgrade until a build reproduces the on-chain hash or the founder accepts the gap in writing."]
+    review_trigger: "Any mainnet step, or a finding that the deployed binary does not match a built commit."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Do whatever is recommended'"
+    approved_at: "2026-10-14"
+    impact: "Holders of .gwap names that exist only on 6cDC lose the Lil Gwapz premium unlock once its reads move to A9SC (GWAP-OWN-003 reads name holdings from GNS). Founder chose 'grant another path' (2026-10-14); see GWAP-OWN-004."
+  - id: GWAP-OWN-004
+    title: "Lil Gwapz unlock for holders of 6cDC-only names uses a grant, not 6cDC reads"
+    status: PILOT
+    owner_system: GwapOS
+    decision: "Holders of .gwap names that exist only on the legacy 6cDC program keep the Lil Gwapz premium unlock through a one-time grant record in GwapOS, keyed by wallet and taken from evidence/2026-10-14-6cDC-name-owner-snapshot.json (27 owners). GNS reads for the unlock stay on A9SC."
+    why: "Founder chose 'grant another path' (2026-10-14) over keeping unlock reads on 6cDC. A fixed grant list avoids a runtime dependency on the retired program, and keeps GNS reads on one canonical program."
+    alternatives: ["Keep unlock reads on 6cDC (not chosen by founder; keeps a retired program in the live path)"]
+    authoritative_sources: ["evidence/2026-10-14-6cDC-name-owner-snapshot.json", "registries/DECISION_REGISTRY.yaml (GWAP-OWN-003, GWAP-GNS-001)"]
+    security_boundary: "The grant is written server-side by GwapOS. The client never supplies proof of holding. The card purchase path (GWAP-PAY-001) is unchanged."
+    implementation: "Open. The unlock code is not in the repos on this machine. Recommended mechanism, not yet built: one grant record per wallet from the snapshot, with the snapshot kept as evidence. A wallet that later sells its 6cDC name keeps the grant; this is a deliberate trade-off."
+    review_trigger: "The grant list is edited, or the unlock moves to mainnet."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Grant another path'"
+    approved_at: "2026-10-14"
+    impact: "The 27 owners of 6cDC names keep the unlock once the grant is live. Until then they lose it when unlock reads move to A9SC."
