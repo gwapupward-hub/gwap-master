@@ -12,19 +12,29 @@
   ],
   "properties": {
     "release_id": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "system": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "repo": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "repo_sha": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "environment": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "artifact": {
       "type": "string"
@@ -79,5 +89,6 @@
     "approved_at": {
       "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }

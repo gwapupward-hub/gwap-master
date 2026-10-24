@@ -3,7 +3,7 @@
   "title": "GWAP MASTER Decision Record",
   "type": "object",
   "required": [
-    "decision_id",
+    "id",
     "title",
     "status",
     "owner_system",
@@ -14,11 +14,15 @@
     "review_trigger"
   ],
   "properties": {
-    "decision_id": {
-      "type": "string"
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "status": {
       "enum": [
@@ -34,16 +38,22 @@
       ]
     },
     "owner_system": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "user_outcome": {
       "type": "string"
     },
     "decision": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "why": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "alternatives": {
       "type": "array",
@@ -64,7 +74,9 @@
       }
     },
     "security_boundary": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "implementation": {
       "type": "string"
@@ -85,13 +97,22 @@
       "type": "string"
     },
     "review_trigger": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "approved_by": {
       "type": "string"
     },
     "approved_at": {
       "type": "string"
+    },
+    "impact": {
+      "type": "string"
+    },
+    "renumbered": {
+      "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }

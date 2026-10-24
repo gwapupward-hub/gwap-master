@@ -1,47 +1,68 @@
 version: "1.0.0"
-updated_at: "2026-10-14"
+updated_at: "2026-10-24"
 decisions:
   - id: GWAP-ARCH-001
     title: "GWAP ecosystem separation"
     status: PRODUCTION
     owner_system: GWAP_MASTER
     decision: "Keep identity, reputation, proof/commerce, application orchestration, payments, and digital assets as separate bounded domains."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["MASTER.md (Core ownership boundaries)", "registries/PRODUCT_TRUTH.yaml"]
+    security_boundary: "MASTER.md signer and authority model: keep the user wallet, Kora fee payer, PPV program upgrade authority, PPV custody authority, GWAP treasury, and automation/agent credentials separate."
     review_trigger: "Major product merger or protocol ownership change."
   - id: GWAP-PPV-001
     title: "PPV staged deployment"
     status: DEVNET_VERIFIED
     owner_system: PPV
     decision: "Core and Commerce may integrate on devnet; Escrow/custody remains gated; mainnet custody disabled."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml (PPV custody)", "MASTER.md (PPV)"]
+    security_boundary: "PPV custody is DISABLED on mainnet and CONTROLLED on devnet (PRODUCT_TRUTH.yaml). Escrow or custody activation needs explicit founder approval."
     review_trigger: "Explicit mainnet custody authorization and security review."
   - id: GWAP-PAY-001
     title: "Separate payment responsibilities"
     status: RESEARCHED
     owner_system: GwapOS
     decision: "Stripe, MPP/x402 Pay/Pay Kit, Kora, and PPV serve different boundaries and must not be collapsed into one payment subsystem."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["MASTER.md (Payment layer, Agentic-payment model)"]
+    security_boundary: "The payment rails are complementary, not interchangeable. Model intent is never financial authorization (MASTER.md)."
     review_trigger: "Production agentic-payment or fee-sponsorship launch."
   - id: GWAP-ASSET-001
     title: "Digital assets are outcome-driven"
     status: PRODUCTION
     owner_system: GwapMojis
     decision: "Do not tokenize by default. Compare off-chain state, custom state, Token-2022, MPL Core, Token Metadata, Bubblegum, and validated inscription primitives."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["MASTER.md (Digital asset layer, Digital-asset model)"]
+    security_boundary: "No token or NFT primitive is chosen before the user outcome justifies on-chain ownership (MASTER.md)."
     review_trigger: "Optional Solana minting enters implementation."
   - id: GWAP-GWAPMOJI-001
     title: "GwapMojis off-chain first"
     status: PRODUCTION
     owner_system: GwapMojis
     decision: "Gift ownership and gifting remain off-chain by default; on-chain minting is optional and explicit."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["registries/PRODUCT_TRUTH.yaml (GwapMojis ownership_model)", "MASTER.md (Digital asset layer)"]
+    security_boundary: "Minting happens only as an explicit user action (PRODUCT_TRUTH.yaml: optional_mint EXPLICIT_USER_ACTION)."
     review_trigger: "Founder explicitly changes ownership model."
   - id: GWAP-REL-001
     title: "Verifiable Solana releases"
     status: PILOT
     owner_system: PPV
     decision: "For program releases, preserve the exact deterministic build artifact and compare executable hash with deployed program hash."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["MASTER.md (Release-integrity model)"]
+    security_boundary: "IDL verification and binary verification are independent gates; neither replaces the other (MASTER.md)."
     review_trigger: "First production-grade verified-build rollout."
   - id: GWAP-PROTO-001
     title: "Protocol claims require activation evidence"
     status: PRODUCTION
     owner_system: GWAP_MASTER
     decision: "SIMD acceptance or implementation does not prove cluster activation; target-cluster evidence is required for live-support claims."
+    why: "Not recorded when this decision was created (2026-09-30)."
+    authoritative_sources: ["MASTER.md (Protocol evidence model)"]
+    security_boundary: "A proposal being accepted does not prove activation. A local validator passing does not prove mainnet support (MASTER.md)."
     review_trigger: "Solana changes feature-gate/activation evidence model."
   - id: GWAP-AGENT-001
     title: "Repository-local agent team with task-routed workflows"
@@ -135,7 +156,7 @@ decisions:
     approved_at: "2026-10-14"
   - id: GWAP-GNS-001
     title: "Fresh start for GNS on devnet; legacy 6cDC names are not migrated"
-    status: PILOT
+    status: DEVNET_VERIFIED
     owner_system: GNS
     decision: "The canonical devnet GNS program is A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH, deployed 2026-10-14 with V1 and V2 config initialized. Names registered under the earlier program 6cDCrNYmasd1qmnvdLf8jyt9iFa3jW9VLzJhrb7X7SEH are not migrated and are no longer reserved. Before the reservation rule is dropped, the 66 names and 27 owners on 6cDC are recorded in evidence/2026-10-14-6cDC-name-owner-snapshot.json."
     why: "Founder decision, 2026-10-14: start fresh and forget the already-registered names. The snapshot is kept because docs/mainnet-cutover-plan.md requires an owner snapshot before any mainnet flip."
@@ -143,13 +164,13 @@ decisions:
     authoritative_sources: ["evidence/2026-10-14-6cDC-name-owner-snapshot.json", "docs/mainnet-cutover-plan.md", "registries/PRODUCT_TRUTH.yaml"]
     pinned_versions: ["anchor-lang 0.30.1 (programs/Anchor.toml)"]
     security_boundary: "Upgrade authority DPXuqzM51BfjRoCRsmCSUGLjt6RBet9wxQidfoSQb5yJ stays with the founder. Devnet only; no mainnet deploy or authority change under this record."
-    implementation: "Open. programs/gwap_names/src/lib.rs, programs/Anchor.toml, and about 35 references across backend, frontend, gwap-names, and scripts still name 6cDC. They must move to A9SC before any release. The release then follows the Solana release-integrity steps (repo SHA, deterministic build, .so hash, deploy, on-chain hash comparison)."
-    deployment_evidence: ["Devnet deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme (program A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH)", "Verification 7 passed, 0 failed, 2 skipped.", "On-chain hash checked 2026-10-14 (evidence/2026-10-14-A9SC-binary-check.md): deployed program data sha256 1c9d70e… (571,816 bytes) is not reproduced by a local cargo-build-sbf of cc1ff12 (565,144 bytes). Release gate: no upgrade until a build reproduces the on-chain hash or the founder accepts the gap in writing."]
+    implementation: "The program-ID change is done: GNS-decent-deploy PR #77 changed it to A9SC, and on main (ce93c70) declare_id!, Anchor.toml and the backend, frontend, SDK and scripts use A9SC; the full 6cDC ID appears only in history documents (docs/gns-v2/00-audit.md, gwap-names/CHANGELOG.md, memory/PRD.md, memory/deploy-history.md). PR #80 records the 6cDC upgrade authority 3iYbi1… as exposed and not held by GWAP. PR #81 made the V2 resolver fall through to the chain on an index miss, with an owner check and an RPC budget. Open: the V2 resolver still returns a Mongo index hit before asking the chain, and the V1 /api/resolve (used by frontend, frontend-gwaplink and wallet-intelligence) is Mongo-only, so names that exist only in Mongo, including names left from 6cDC and owners since changed on chain, can still resolve off-chain. pay_name checks the target on chain, so funds go to the on-chain target, but a displayed owner can be wrong. Releases follow GWAP-REL-001; see registries/RELEASE_REGISTRY.yaml."
+    deployment_evidence: ["Devnet deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme (program A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH)", "On-chain hash checked 2026-10-14 (evidence/2026-10-14-A9SC-binary-check.md): deployed ProgramData sha256 1c9d70e… (571,816 bytes) is not reproduced by a build of cc1ff12 (565,144 bytes).", "Release gate cleared 2026-10-14 (evidence/2026-10-14-A9SC-build-reproduction-attempts.md): builds of d95efbf and its CI merge ffdb2d5 reproduce the deployed bytes exactly (raw sha256 1c9d70e…); gwap-reviewer PASS. This is the baseline the GNS upgrade rehearsal pins.", "Verifier 2026-10-15 (GNS memory/deploy-history.md): --mutate 17 passed, 0 failed (registered and paid vfye6gghqie.gwap); --name vfye6gghqie.gwap --measure 24 passed, 0 failed, 0 skipped. Config: admin DPXuqz…, not paused, policy 0, fee 10,000,000 lamports.", "Resolver 2026-10-24 (evidence/2026-10-24-A9SC-resolver-observation.md): live /api/v2/resolve/vfye6gghqie.gwap returned found true, source chain, after one unexplained 30 s client timeout."]
     review_trigger: "Any mainnet step, or a finding that the deployed binary does not match a built commit."
     approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Do whatever is recommended'"
     approved_at: "2026-10-14"
-    impact: "Holders of .gwap names that exist only on 6cDC lose the Lil Gwapz premium unlock once its reads move to A9SC (GWAP-OWN-003 reads name holdings from GNS). Founder chose 'grant another path' (2026-10-14); see GWAP-OWN-004."
-  - id: GWAP-OWN-004
+    impact: "Holders of .gwap names that exist only on 6cDC lose the Lil Gwapz premium unlock once its reads move to A9SC (GWAP-OWN-003 reads name holdings from GNS). Founder chose 'grant another path' (2026-10-14); see GWAP-OWN-007."
+  - id: GWAP-OWN-007
     title: "Lil Gwapz unlock for holders of 6cDC-only names uses a grant, not 6cDC reads"
     status: PILOT
     owner_system: GwapOS
@@ -163,3 +184,22 @@ decisions:
     approved_by: "Founder (Papi Gwap), via chat 2026-10-14: 'Grant another path'"
     approved_at: "2026-10-14"
     impact: "The 27 owners of 6cDC names keep the unlock once the grant is live. Until then they lose it when unlock reads move to A9SC."
+    renumbered: "Recorded as a second GWAP-OWN-004 on 2026-10-14; renumbered to GWAP-OWN-007 on 2026-10-24. GWAP-OWN-004 is GWAPLINK. The 2026-10-14 evidence files keep the old number."
+  - id: GWAP-GNS-002
+    title: "Emoji names behind POLICY_EMOJI alone, from a fixed allowlist"
+    status: PILOT
+    owner_system: GNS
+    user_outcome: "People can register .gwap names that contain emoji, without opening lookalike names in other scripts."
+    decision: "Name policy flag 0x02 (POLICY_EMOJI) opens emoji on its own; every other non-ASCII character still needs POLICY_UNICODE (0x01). The emoji class is a generated allowlist of 1,329 code points from pinned Unicode 15.1 emoji-data.txt: Emoji_Presentation, or Emoji and Extended_Pictographic; assigned; unchanged by NFKC; caseless; not on a denylist of text-style lookalikes; not a regional indicator. Variation selectors U+FE0E/FE0F are stripped by clients and rejected by the program; ZWJ U+200D stays forbidden. The program, backend, SDK and frontend compile the same generated table."
+    why: "On the previous build emoji needed POLICY_UNICODE, which also admits other scripts (Cyrillic а next to Latin a). The previous symbol blocks included characters that pass for name characters or that NFKC rewrites. One emoji must map to one address."
+    alternatives: ["Open emoji through POLICY_UNICODE (rejected: admits mixed-script lookalikes)", "Unicode symbol blocks instead of an allowlist (rejected by review: lookalikes, NFKC rewrites, unassigned code points)", "Allow flags (excluded: on platforms without flag glyphs each regional indicator draws as a capital letter)"]
+    authoritative_sources: ["GNS-decent-deploy docs/gns-v2/architecture.md (Normalization)", "GNS-decent-deploy docs/gns-v2/deployment-runbook.md section 8", "GNS-decent-deploy scripts/gns-v2/gen_emoji_allowlist.py", "GNS-decent-deploy programs/gwap_names/src/emoji_allowlist.txt"]
+    pinned_versions: ["Unicode 15.1 emoji-data.txt, sha256 d7aef489c8fe4c14f09ea5695200277c6b93ac82ac60845cdd2161b0d6835cc1"]
+    security_boundary: "Names are PDAs of the canonical form, so any system that normalizes .gwap names (GwapSpot Browser, GWAPLINK, GwapOS) must use the GNS SDK or backend normalizer and its generated table, not its own rules. The policy flip uses the V2 admin key (founder) and is a devnet action. Policy 3 must never be set. Not yet founder-confirmed: flags stay excluded, boxed-text emoji (🆗 🔟 💯) are allowed, and standalone skin-tone modifiers and weak pictograph pairs (☂ ⛱, ⛰ 🏔) are accepted residual risks (architecture.md)."
+    implementation: "Merged to GNS-decent-deploy main at ce93c70 on 2026-10-24: PR #83 (A9SC upgrade rehearsal; upgrade-devnet.sh requires --expect-sha256), PR #84 (program, SDK and backend rules; set_name_policy.py), PR #85 (frontend). Devnet still runs the previous binary at policy 0."
+    test_evidence: ["Security audit run 40074816878 on ce93c70: programs job 66 host tests passed, sdk job 66 passed, backend job passed (Python 3.11; Python 3.13 runs only gen_emoji_allowlist.py --check). Its frontend and wallet-intelligence jobs failed on new high-severity dependency advisories (follow-redirects; body-parser, multer), so frontend tests did not run there; proposed fix GNS-decent-deploy PR #86, open.", "Frontend 132 tests passed in run 38713307214 on f21d378, the same tree as ce93c70.", "Program build run 40074816843 on ce93c70: A9SC upgrade rehearsal REAL on Solana 1.18.26 and Agave 4.3.0, ARTIFACT_SHA256 c7697f221cf884ee33212fc96cfd19d4d16825f55ac203e0cd8dafde43148557, accounts byte-identical after upgrade, verifier 25 passed, 0 failed, 0 skipped."]
+    deployment_evidence: ["None yet. Activation is founder-run: upgrade A9SC to c7697f22…, deploy the frontend, then set policy 2 on chain and GNS_NAME_POLICY=2 on Render (runbook section 8)."]
+    rollback: "Runbook section 8, Turning it off: backend GNS_NAME_POLICY=0 first, then set_name_policy.py --policy 0. Registered emoji names stay on chain but cannot be resolved by name or renewed from the app until the policy is raised again."
+    review_trigger: "The policy is changed on any cluster, the allowlist or Unicode version changes, flags are proposed, or any mainnet step."
+    approved_by: "Founder (Papi Gwap), via chat 2026-10-15: 'Ok let's complete everything with this sprint', approving the emoji-only plan (no other scripts)"
+    approved_at: "2026-10-15"

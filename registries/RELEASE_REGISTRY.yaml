@@ -1,4 +1,36 @@
 version: "1.0.0"
-updated_at: "2026-09-30"
-records: []
+updated_at: "2026-10-24"
+records:
+  - release_id: GNS-A9SC-2026-10-14
+    system: GNS
+    repo: "gwapupward-hub/GNS-decent-deploy"
+    repo_sha: "d95efbf5f95179eaf9bf89d58abe67ca06db10ec"
+    environment: devnet
+    artifact: "programs/target/deploy/gwap_names.so (CI artifact gwap_names-sbf-ffdb2d5a656755b1a6dad66553bce1963c8c6bc9, run 38598151830)"
+    artifact_sha256: "1c9d70e441733e7cb965fd460d28587b000222aed34769c0d46be5af4940fcc2"
+    tests: ["CI run 38598151830: 11 local-validator checks passed, 0 failed.", "Verifier 2026-10-15: --mutate 17 passed, 0 failed; --name vfye6gghqie.gwap --measure 24 passed, 0 failed, 0 skipped."]
+    security_gates: ["Source build of d95efbf and its CI merge ffdb2d5 reproduce the deployed bytes (evidence/2026-10-14-A9SC-build-reproduction-attempts.md); gwap-reviewer PASS.", "init_config accepts only the upgrade authority (audit SPA-001)."]
+    deployed_target: "A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH (ProgramData qtpT6S2Ntw9VYBnXrjBf8XUG83wmM54TFtHyAQCz2q4), deploy signature 5XS977E8UWHLwfZn5ZopmMjUGmAX2cmCsJsd5EzKuP4A3WrfiM7da66e9ovBjc3EeHt8XrNLrgQRfroxLQK16pme, slot 511059525"
+    deployed_hash: "1c9d70e441733e7cb965fd460d28587b000222aed34769c0d46be5af4940fcc2 (raw ProgramData bytes, 571,816 bytes)"
+    idl_or_interface_evidence: ["No on-chain IDL comparison has been made.", "Behavioral interface check only: the 2026-10-15 devnet verifier exercised register, pay and resolve against the deployed program (17/0 and 24/0/0)."]
+    status: DEVNET_VERIFIED
+    blockers: ["Before promotion past DEVNET_VERIFIED: an independent IDL/interface comparison (RELEASE_WORKFLOW.md).", "Before promotion past DEVNET_VERIFIED: a verifiable build (solana-verify build and get-executable-hash, or verify-from-repo). The hash match is from cargo-build-sbf and is local-only (PUBLIC_VERIFICATION=local-only in the reproduction evidence)."]
+    approved_by: "Founder-executed: deployed with the founder-held upgrade authority DPXuqz…. No separate written release approval is recorded; the fresh start itself is GWAP-GNS-001. approved_at is the date the founder executed the deploy."
+    approved_at: "2026-10-14"
+  - release_id: GNS-A9SC-2026-10-24-emoji
+    system: GNS
+    repo: "gwapupward-hub/GNS-decent-deploy"
+    repo_sha: "ce93c70a803a277dc7efc9008a3141bfb8e34fd3"
+    environment: devnet
+    artifact: "programs/target/deploy/gwap_names.so (CI artifact gwap_names-sbf-ce93c70a803a277dc7efc9008a3141bfb8e34fd3, run 40074816843)"
+    artifact_sha256: "c7697f221cf884ee33212fc96cfd19d4d16825f55ac203e0cd8dafde43148557"
+    tests: ["Program build run 40074816843: sbf build and 11 local-validator checks passed.", "A9SC upgrade rehearsal on Solana 1.18.26 and Agave 4.3.0: UPGRADE_KIND REAL, HASH_MATCH true, accounts byte-identical, verifier 25 passed, 0 failed, 0 skipped."]
+    security_gates: ["The rehearsal starts from the pinned deployed binary 1c9d70e… (GNS-A9SC-2026-10-14).", "upgrade-devnet.sh --execute refuses any binary whose sha256 is not passed as --expect-sha256."]
+    deployed_target: "A9SCN6tgaoAEorFzY5ZPinruk8LCttmrAEU9JoAmUKUH"
+    deployed_hash: "Not deployed."
+    idl_or_interface_evidence: ["None recorded."]
+    status: NOT_READY
+    blockers: ["Not deployed or activated, and no founder release approval yet.", "Verifiable-build gates not run: the artifact is from cargo-build-sbf, not solana-verify build with a frozen Solana Verify CLI and Docker (systems/engineering-intelligence/SKILL.md, Solana Release Integrity).", "No IDL/interface comparison.", "Security audit is red on ce93c70 (frontend and wallet-intelligence dependency advisories); the frontend that activation deploys needs GNS-decent-deploy PR #86 or an equivalent fix first.", "The founder runs the upgrade with the A9SC upgrade authority: upgrade-devnet.sh --expect-sha256 c7697f22… --execute (GNS runbook section 2).", "After the upgrade: record the deployed hash here and in GNS memory/deploy-history.md, and update the rehearsal's pinned hash."]
+    approved_by: "Pending founder approval"
+    approved_at: ""
 required_fields: [release_id, system, repo, repo_sha, environment, artifact, artifact_sha256, tests, security_gates, deployed_target, deployed_hash, idl_or_interface_evidence, status, blockers, approved_by, approved_at]

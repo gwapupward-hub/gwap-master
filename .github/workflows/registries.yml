@@ -1,0 +1,21 @@
+name: Registries
+
+on:
+  pull_request:
+    paths: ["registries/**", "schemas/**", "scripts/validate_registries.py", "scripts/requirements.txt", ".github/workflows/registries.yml"]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r scripts/requirements.txt
+      - run: python scripts/validate_registries.py
