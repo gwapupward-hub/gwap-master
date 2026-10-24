@@ -37,4 +37,4 @@ It is not yet installed at `.claude/skills/gwapos-engineering-intelligence/`. Th
 
 ## Commands
 
-No build or test commands are defined yet for this repository. Add them here when a product repository lands.
+- `python3 scripts/validate_registries.py`: checks `registries/DECISION_REGISTRY.yaml` and `registries/RELEASE_REGISTRY.yaml` against `schemas/`, and fails on a duplicate id. Run it after any registry edit. Needs PyYAML and jsonschema.

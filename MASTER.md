@@ -242,6 +242,7 @@ Do not begin with “make it an NFT.” Begin with the user outcome and decide w
 - `registries/SOURCE_REGISTRY.yaml` — top-level source routing and links into engineering intelligence.
 - `schemas/decision-record.schema.json` — decision record structure.
 - `schemas/release-record.schema.json` — release evidence structure.
+- `scripts/validate_registries.py` — checks the registries against the schemas.
 - `runbooks/DECISION_WORKFLOW.md` — how to process a new decision.
 - `runbooks/RELEASE_WORKFLOW.md` — how to promote a change.
 - `runbooks/NEW_REPO_INTAKE.md` — how new external repositories enter MASTER.

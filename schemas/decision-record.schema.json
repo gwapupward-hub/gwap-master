@@ -3,7 +3,7 @@
   "title": "GWAP MASTER Decision Record",
   "type": "object",
   "required": [
-    "decision_id",
+    "id",
     "title",
     "status",
     "owner_system",
@@ -14,7 +14,7 @@
     "review_trigger"
   ],
   "properties": {
-    "decision_id": {
+    "id": {
       "type": "string"
     },
     "title": {
@@ -91,6 +91,12 @@
       "type": "string"
     },
     "approved_at": {
+      "type": "string"
+    },
+    "impact": {
+      "type": "string"
+    },
+    "renumbered": {
       "type": "string"
     }
   }
