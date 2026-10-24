@@ -37,4 +37,4 @@ It is not yet installed at `.claude/skills/gwapos-engineering-intelligence/`. Th
 
 ## Commands
 
-- `python3 scripts/validate_registries.py`: checks `registries/DECISION_REGISTRY.yaml` and `registries/RELEASE_REGISTRY.yaml` against `schemas/`, and fails on a duplicate id. Run it after any registry edit. Needs PyYAML and jsonschema.
+- `python3 scripts/validate_registries.py`: checks `registries/DECISION_REGISTRY.yaml` and `registries/RELEASE_REGISTRY.yaml` against `schemas/`, and fails on a duplicate id. Run it after any registry edit. Install its pinned dependencies with `pip install -r scripts/requirements.txt`. CI runs it in `.github/workflows/registries.yml`.

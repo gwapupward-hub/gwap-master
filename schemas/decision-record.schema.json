@@ -15,10 +15,12 @@
   ],
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "status": {
       "enum": [
@@ -34,16 +36,19 @@
       ]
     },
     "owner_system": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "user_outcome": {
       "type": "string"
     },
     "decision": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "why": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "alternatives": {
       "type": "array",
@@ -64,7 +69,8 @@
       }
     },
     "security_boundary": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "implementation": {
       "type": "string"
@@ -85,7 +91,8 @@
       "type": "string"
     },
     "review_trigger": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "approved_by": {
       "type": "string"
@@ -99,5 +106,6 @@
     "renumbered": {
       "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }
