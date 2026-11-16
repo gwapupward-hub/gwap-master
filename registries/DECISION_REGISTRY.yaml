@@ -203,3 +203,17 @@ decisions:
     review_trigger: "The policy is changed on any cluster, the allowlist or Unicode version changes, flags are proposed, or any mainnet step."
     approved_by: "Founder (Papi Gwap), via chat 2026-10-15: 'Ok let's complete everything with this sprint', approving the emoji-only plan (no other scripts)"
     approved_at: "2026-10-15"
+  - id: GWAP-SOL-INFRA-001
+    title: "Versioned Solana infrastructure reference (2026-11-16)"
+    status: RESEARCHED
+    owner_system: GWAP_MASTER
+    user_outcome: "Keep GWAP's technical choices auditable and find official Solana primitives by capability without conflating research with production integration."
+    decision: "Catalog upstream Solana developer resources under identity, verification, security, testing, monitoring, and payments in a versioned GWAP reference and machine-readable registry. Treat all new candidates as RESEARCHED / REFERENCE_ONLY; evaluate independently before adoption."
+    why: "The Solana developer hub contains overlapping primitives; categorization and provenance reduce duplicated engineering and accidental scope/authority changes."
+    alternatives: ["Use unversioned links without source or status metadata", "Adopt all upstream tools by default"]
+    authoritative_sources: ["MASTER.md (authority and domain boundaries)", "https://solana.com/developers", "docs/solana-infrastructure/SOLANA_INFRASTRUCTURE_REFERENCE_v1.0.0.md", "registries/SOLANA_INFRASTRUCTURE.yaml"]
+    pinned_versions: ["GWAP reference/catalog v1.0.0 (reviewed 2026-11-16); upstream commits/packages explicitly unpinned and must be pinned before PILOT"]
+    security_boundary: "No tool or integration approved; no changes to OAR verification authority, GNS identity, GwapScore reputation policy, PPV custody, RoyaltyRails settlement, GWAP signer roles, production or mainnet/spending controls."
+    implementation: "Reference documentation plus source/catalog registry entries only. Product-specific implementations require separate repo changes and review."
+    rollback: "Revert reference and registry changes; no application/runtime changes are made."
+    review_trigger: "Upstream breaking release/audit, protocol activation changes, a proposed GWAP integration, or scheduled reference review by 2027-02-16."

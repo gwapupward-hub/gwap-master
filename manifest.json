@@ -13,7 +13,14 @@
     "releases": "registries/RELEASE_REGISTRY.yaml",
     "sources": "registries/SOURCE_REGISTRY.yaml",
     "agent_team": ".claude/agents",
-    "agent_workflows": "runbooks/AGENT_WORKFLOWS.md"
+    "agent_workflows": "runbooks/AGENT_WORKFLOWS.md",
+    "solana_infrastructure_reference": {
+      "version": "1.0.0",
+      "reviewed_at": "2026-11-16",
+      "status": "RESEARCHED",
+      "document": "docs/solana-infrastructure/SOLANA_INFRASTRUCTURE_REFERENCE_v1.0.0.md",
+      "catalog": "registries/SOLANA_INFRASTRUCTURE.yaml"
+    }
   },
   "hard_rules": [
     "External technology informs GWAP; it does not control GWAP.",

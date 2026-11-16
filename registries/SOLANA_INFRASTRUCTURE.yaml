@@ -1,0 +1,96 @@
+version: "1.0.0"
+status: RESEARCHED
+reviewed_at: "2026-11-16"
+next_review_by: "2027-02-16"
+owner_system: GWAP_MASTER
+developer_hub: "https://solana.com/developers"
+document: "docs/solana-infrastructure/SOLANA_INFRASTRUCTURE_REFERENCE_v1.0.0.md"
+decision_id: GWAP-SOL-INFRA-001
+policy: "REFERENCE_ONLY; catalog presence never authorizes integration, mainnet, custody, signer changes or spending"
+source_pin_policy: "Living official docs reviewed on reviewed_at; immutable release/commit required before any pilot"
+categories: [identity, verification, security, testing, monitoring, payments]
+resources:
+  - id: SOL-IDENTITY-001
+    name: Agent Registry
+    category: identity
+    url: "https://solana.com/agent-registry"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [OAR, GNS, GWAP_AGENTS]
+  - id: SOL-VERIFY-001
+    name: Solana Attestations
+    category: verification
+    also_relevant_to: [identity]
+    url: "https://solana.com/docs/tools/attestations"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [OAR, GNS, GwapScore]
+  - id: SOL-SEC-001
+    name: Solana Keychain
+    category: security
+    url: "https://solana.com/docs/tools/keychain"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [PPV, RoyaltyRails, GwapOS, OAR]
+  - id: SOL-SEC-002
+    name: Production readiness and security
+    category: security
+    url: "https://solana.com/docs/tools/production-readiness"
+    additional_urls: ["https://solana.com/docs/tools/security"]
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [GWAP_MASTER, OAR, PPV, RoyaltyRails, GNS]
+  - id: SOL-TEST-001
+    name: Surfpool
+    category: testing
+    url: "https://solana.com/docs/tools/surfpool"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [OAR, GNS, PPV, RoyaltyRails, GwapScore]
+  - id: SOL-TEST-002
+    name: LiteSVM
+    category: testing
+    url: "https://solana.com/docs/tools/litesvm"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [OAR, GNS, PPV, RoyaltyRails]
+  - id: SOL-MON-001
+    name: Microscope
+    category: monitoring
+    url: "https://solana.com/microscope"
+    upstream_repository: "https://github.com/solana-foundation/solana-microscope"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [OAR, GNS, PPV, RoyaltyRails]
+  - id: SOL-PAY-001
+    name: Kora
+    category: payments
+    also_relevant_to: [security]
+    url: "https://solana.com/docs/tools/kora"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [GwapOS, GNS]
+  - id: SOL-PAY-002
+    name: Solana Pay
+    category: payments
+    url: "https://solana.com/docs/tools/solana-pay"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [GwapOS, RoyaltyRails]
+  - id: SOL-PAY-003
+    name: x402 on Solana
+    category: payments
+    url: "https://solana.com/x402"
+    status: RESEARCHED
+    upstream_commit_or_release: null
+    gwap_integration: NONE
+    candidates: [GwapOS, GWAP_DEVELOPER_APIS]

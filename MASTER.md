@@ -240,6 +240,8 @@ Do not begin with “make it an NFT.” Begin with the user outcome and decide w
 - `registries/DECISION_REGISTRY.yaml` — architectural and implementation decisions.
 - `registries/RELEASE_REGISTRY.yaml` — release/deployment evidence records.
 - `registries/SOURCE_REGISTRY.yaml` — top-level source routing and links into engineering intelligence.
+- `docs/solana-infrastructure/SOLANA_INFRASTRUCTURE_REFERENCE_v1.0.0.md` — dated Solana capability map (identity, verification, security, testing, monitoring, payments); upstream research, **not** adoption.
+- `registries/SOLANA_INFRASTRUCTURE.yaml` — machine-readable Solana resources, review status, source URLs, and explicit unpinned upstream versions.
 - `schemas/decision-record.schema.json` — decision record structure.
 - `schemas/release-record.schema.json` — release evidence structure.
 - `scripts/validate_registries.py` — checks the registries against the schemas.
