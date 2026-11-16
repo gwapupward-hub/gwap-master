@@ -205,13 +205,15 @@ decisions:
     approved_at: "2026-10-15"
   - id: GWAP-MSG-001
     title: "GwapSpot encrypted messaging: end-to-end, 1:1 first"
-    status: PROPOSED
+    status: PILOT
     owner_system: GwapSpot
     user_outcome: "Two wallet holders on GwapSpot can exchange private messages that the platform relays but cannot read."
     decision: "Build 1:1 end-to-end encrypted messaging in gwap-platform. Each user derives an X25519 messaging key in the browser from a wallet signature and registers its public half only after the wallet signs a registration message. The server stores and relays ciphertext only. Phase 1 uses static keys (no ratchet) and polling. Groups, forward secrecy and ZK-gated messaging are deferred."
     why: "Marketplace parties need privacy from the platform, and wallet-bound keys reuse the identity the platform verifies. Static keys keep the first slice small. The trade-off: a leaked messaging key exposes that key's history."
     alternatives: ["Server-readable messages with encryption at rest (rejected: the platform could read messages)", "Messages on-chain (rejected: permanent public ciphertext and metadata)", "Double Ratchet from day one (deferred: much more work for the MVP)"]
     authoritative_sources: ["gwap-platform apps/api/src/modules/auth/ (wallet challenge and signature verification, draft PR #2)", "gwap-platform packages/database/migrations/"]
-    security_boundary: "The server never receives plaintext or private keys. The platform sees metadata: sender, recipient, time and size. Browser-served JavaScript is part of the trust base, so a compromised deploy could read messages; the GwapSpot Browser (Tauri) is the stronger surface. E2EE chats are not readable by the platform, so the escrow dispute evidence path is unresolved and needs its own decision."
+    security_boundary: "The server never receives plaintext or private keys. The platform sees metadata: sender, recipient, time and size. Browser-served JavaScript is part of the trust base, so a compromised deploy could read messages; the GwapSpot Browser (Tauri) is the stronger surface. E2EE chats are not readable by the platform. The founder deferred the dispute evidence decision on 2026-11-16, so disputes have no access to message content until that decision is made."
     review_trigger: "Groups, ratcheting, ZK-gated messaging, any message storage beyond relay, any dispute access to message content, or production launch."
-    implementation: "Open. Wallet signature verification is in draft PR gwapupward-hub/gwapplatform#2. Messaging backend and client module are in progress."
+    implementation: "Built in draft PRs in gwapupward-hub/gwapplatform: #2 wallet signature verification, #3 wallet-link web flow, #4 messaging API and client crypto, #5 messaging thread UI. Not deployed. Not run against a live database. The safety number is the only defense against server key substitution; out-of-band verification is not enforced yet."
+    approved_by: "Founder (Papi Gwap), via chat 2026-11-16: 'Approved'"
+    approved_at: "2026-11-16"
