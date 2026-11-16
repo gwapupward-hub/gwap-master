@@ -1,12 +1,21 @@
 version: "1.0.0"
-updated_at: "2026-10-27"
+updated_at: "2026-11-16"
 authority_order: [founder_and_product_decisions, current_gwap_repo_and_deployment_reality, gwap_security_and_release_gates, current_official_protocol_specs, pinned_official_upstream_sources, established_ecosystem_sources, examples_templates_community]
 systems:
   engineering_intelligence:
     path: systems/engineering-intelligence
     version: "2.1.0"
+infrastructure_references:
+  solana:
+    version: "1.0.0"
+    status: RESEARCHED
+    reviewed_at: "2026-11-16"
+    reference: "docs/solana-infrastructure/SOLANA_INFRASTRUCTURE_REFERENCE_v1.0.0.md"
+    catalog: "registries/SOLANA_INFRASTRUCTURE.yaml"
+    decision_id: GWAP-SOL-INFRA-001
+    note: "Upstream references only; no GWAP integration, signer/custody/mainnet authority or spending approval."
 high_value_sources:
-  solana: [specs, solana-improvement-documents, feature-activation-verifier, solana-dev-skill, surfpool, solana-verifiable-build, solana-keychain, kora, pay, pay-kit, mpp-specs, transaction-v1-examples, idl, idl-spec]
+  solana: [specs, solana-improvement-documents, feature-activation-verifier, solana-dev-skill, surfpool, solana-verifiable-build, solana-keychain, kora, pay, pay-kit, mpp-specs, transaction-v1-examples, idl, idl-spec, solana-attestations, agent-registry, microscope, lite-svm, solana-pay]
   signer_research:
     dts02_6502_signer:
       repository: "https://github.com/aeyakovenko/dts02-6502-signer"
